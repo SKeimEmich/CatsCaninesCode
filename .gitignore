@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### DB Keys ###
-src/main/resources/config/application.properties
+src/main/resources/application.properties
 
 ### ECLIPSE ###
 *.settings
