@@ -1,4 +1,4 @@
-package edu.emich.CatsCaninesCode;
+package edu.emich.CatsCaninesCode.controllers;
 
 
 import org.springframework.stereotype.Controller;
