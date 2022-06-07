@@ -24,7 +24,7 @@ public class User {
 	public User() {
 	}
 	
-	public User(String email, String name, String password) {
+	public User(String name, String email, String password) {
 		super();
 		this.email = email;
 		this.name = name;

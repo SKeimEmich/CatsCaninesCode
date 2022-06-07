@@ -1,6 +1,8 @@
 package edu.emich.CatsCaninesCode.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,10 +42,11 @@ public class MainController {
 		
 		User user = new User(userName, email, password);
 		uRepo.save(user);
-//		user = uRepo.findByEmail(email).get(0);
-//		Pet pet = new Pet(petName, user);
-//		pRepo.save(pet);
-		return new ModelAndView("register", "message", String.format("%s registered successfully!", petName));
+		List<User> userList = uRepo.findByEmail(email);
+		Pet pet = new Pet(petName, userList.get(0));
+		pRepo.save(pet);
+//		return new ModelAndView("register", "message", String.format("%s registered successfully!", petName));
+		return new ModelAndView("register", "message", pet.getOwner().getEmail().equals(email));
 	}
 	
 	
