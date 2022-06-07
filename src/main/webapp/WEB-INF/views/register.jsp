@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" href="cnc.css">
+    <link rel="stylesheet" href="/cnc.css">
 </head>
 
 
@@ -25,30 +25,31 @@
         <a href="#"> Selwa Alsomairy </a> 
       </div>
       
+      <div>
+		<h4>${message}</h4>
+	  </div>
+			
+      
       <div class="container">
         <div class="title">Animal Registration</div>
         <div class="content">
-          <form action="#">
+          <form method="post">
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Pet Parent Full Name</span>
-                <input type="text" placeholder="Enter Parent name" required>
+                <input type="text" placeholder="Enter Parent name" name="ownerName" required>
               </div>
               <div class="input-box">
                 <span class="details">Email Address</span>
-                <input type="text" placeholder="Enter parent contact email" required>
+                <input type="text" placeholder="Enter parent contact email" name="email" required>
               </div>
               <div class="input-box">
                 <span class="details">Pet Name</span>
-                <input type="text" placeholder="What do we call our new friend?" required>
+                <input type="text" placeholder="What do we call our new friend?" name="petName" required>
               </div>
               <div class="input-box">
-                <span class="details">Insurance</span>
-                <input type="text" placeholder="Enter Insurance Info or N/A" required>
-              </div>
-              <div class="input-box">
-                <span class="details">LoginKey</span>
-                <input type="text" placeholder="Assign LoginKey" required>
+                <span class="details">Password</span>
+                <input type="hidden" placeholder="Choose a password" name="password"  required>
               </div>
             </div>
             <div class="history">

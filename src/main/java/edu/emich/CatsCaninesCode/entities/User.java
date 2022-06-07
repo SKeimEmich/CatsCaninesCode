@@ -6,11 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-enum UserType {
-	STAFF,
-	CLIENT
-}
-
 @Entity
 public class User {
 
@@ -21,10 +16,20 @@ public class User {
 	private String address;
 	private String password;
 	private String phone;
-	private UserType userType;
+	private String acctType;
 	
 	@OneToMany(mappedBy="user")
 	private Set<Pet> pets;
+	
+	public User() {
+	}
+	
+	public User(String email, String name, String password) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.password = password;
+	}
 	
 	public String getName() {
 		return name;
@@ -56,11 +61,11 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public UserType getUserType() {
-		return userType;
+	public String getUserType() {
+		return acctType;
 	}
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setUserType(String acctType) {
+		this.acctType = acctType;
 	}
 	public Set<Pet> getPets() {
 		return pets;
@@ -71,7 +76,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", address=" + address + ", email=" + email + ", password=" + password
-				+ ", userType=" + userType + ", pets=" + pets + "]";
+				+ ", userType=" + acctType + ", pets=" + pets + "]";
 	}
 	
 	

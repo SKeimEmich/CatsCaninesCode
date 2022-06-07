@@ -26,6 +26,10 @@ public class Pet {
 	@OneToMany(mappedBy="pet")
 	private Set<Appointment> appointments;
 
+	public Pet(String name, User user) {
+		this.name = name;
+		this.user = user;
+	}
 	public String getName() {
 		return name;
 	}
