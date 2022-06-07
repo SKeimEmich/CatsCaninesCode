@@ -20,6 +20,7 @@ public class User {
 	private String name;
 	private String address;
 	private String password;
+	private String phone;
 	private UserType userType;
 	
 	@OneToMany(mappedBy="user")
@@ -48,6 +49,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public UserType getUserType() {
 		return userType;

@@ -11,6 +11,7 @@ public class Record {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private Long appointmentId;
 	private int serviceCode;
 	private String description;
 	private int monthsOfEffect; // recorded as number of months
@@ -18,6 +19,22 @@ public class Record {
 	
 	@ManyToOne
 	private Appointment appointment;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getAppointmentId() {
+		return appointmentId;
+	}
+
+	public void setAppointmentId(Long appointmentId) {
+		this.appointmentId = appointmentId;
+	}
 
 	public int getServiceCode() {
 		return serviceCode;
