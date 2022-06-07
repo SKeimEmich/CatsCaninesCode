@@ -11,4 +11,16 @@ public class MainController {
 	public ModelAndView index() {
 		return new ModelAndView("index", "message", "Hello World!");
 	}
+	@RequestMapping("/register")
+	public ModelAndView register() {
+		return new ModelAndView("register");
+	}
+	@RequestMapping("/adminlogin.html")
+	public ModelAndView adminLogin() {
+		return new ModelAndView("adminlogin");
+	}
+	@RequestMapping("/admin")
+	public ModelAndView adminHome() {
+		return new ModelAndView("admin");
+	}
 }

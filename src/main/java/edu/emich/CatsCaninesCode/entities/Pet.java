@@ -21,7 +21,7 @@ public class Pet {
 	private String description;
 	private LocalDate dateOfBirth;
 	@ManyToOne
-	private User owner;
+	private User user;
 	
 	@OneToMany(mappedBy="pet")
 	private Set<Appointment> appointments;
@@ -62,11 +62,11 @@ public class Pet {
 	}
 
 	public User getOwner() {
-		return owner;
+		return user;
 	}
 
 	public void setOwner(User owner) {
-		this.owner = owner;
+		this.user = owner;
 	}
 
 	public Set<Appointment> getAppointments() {
@@ -80,7 +80,7 @@ public class Pet {
 	@Override
 	public String toString() {
 		return "Pet [name=" + name + ", species=" + species + ", description=" + description + ", dateOfBirth="
-				+ dateOfBirth + ", owner=" + owner + "]";
+				+ dateOfBirth + ", owner=" + user + "]";
 	}
 	
 }

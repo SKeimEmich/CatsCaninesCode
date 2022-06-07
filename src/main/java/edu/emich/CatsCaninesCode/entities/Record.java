@@ -10,8 +10,7 @@ public class Record {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	private Long appointmentId;
+
 	private int serviceCode;
 	private String description;
 	private int monthsOfEffect; // recorded as number of months
@@ -26,14 +25,6 @@ public class Record {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getAppointmentId() {
-		return appointmentId;
-	}
-
-	public void setAppointmentId(Long appointmentId) {
-		this.appointmentId = appointmentId;
 	}
 
 	public int getServiceCode() {
