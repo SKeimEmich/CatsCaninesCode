@@ -9,29 +9,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" href="/cnc.css">
+    <!--  <link rel="stylesheet" href="/cnc.css"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
 
 <body>
     
-    <div class="sidenav">
-        <a href="index2.html">Cats & Canines </a> <!--will add a logo here once I draw it out-->
-        <a href="adminpetpage.html">Pet Page Edit</a>
-        <a href="register.html">Register New</a> 
-        <a href="#"> - </a>
-        <a href="#"> Doug Biske </a>
-        <a href="#"> Sam Keim </a>
-        <a href="#"> Selwa Alsomairy </a> 
+    <ul class="nav">
+    	<li class="nav-item">
+        	<a class="nav-link" href="index2.html">Cats & Canines </a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="adminpetpage.html">Pet Page Edit</a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="register.html">Register New</a> 
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="#"> - </a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="#"> Doug Biske </a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="#"> Sam Keim </a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="#"> Selwa Alsomairy </a> 
+        </li>
       </div>
       
-      <div>
-		<h4>${message}</h4>
-	  </div>
 			
       
       <div class="container">
-        <div class="title">Animal Registration</div>
+		<c:if test="${message ne null}">
+	      <div class="alert alert-success" role="alert">
+				<h4>${message}</h4>
+		  </div>
+      	</c:if>      	
+      	
+	    <h2>Animal Registration</h2>
         <div class="content">
           <form method="post">
             <div class="user-details">

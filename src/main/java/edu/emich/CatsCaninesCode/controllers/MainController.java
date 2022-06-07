@@ -45,8 +45,7 @@ public class MainController {
 		List<User> userList = uRepo.findByEmail(email);
 		Pet pet = new Pet(petName, userList.get(0));
 		pRepo.save(pet);
-//		return new ModelAndView("register", "message", String.format("%s registered successfully!", petName));
-		return new ModelAndView("register", "message", pet.getOwner().getEmail().equals(email));
+		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", petName, userName));
 	}
 	
 	
