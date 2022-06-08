@@ -42,9 +42,7 @@
         	<a class="nav-link" href="#"> Selwa Alsomairy </a> 
         </li>
       </ul>
-      
-			
-      
+
       <div class="container">
 		<c:if test="${message ne null}">
 	      <div class="alert alert-success" role="alert">
@@ -52,54 +50,38 @@
 		  </div>
       	</c:if>      	
       	
-	    <h2>Animal Registration</h2>
+	    <h2>User Lookup</h2>
         <div class="content">
           <form method="post">
-            <div class="user-details">
               <div class="input-box">
-                <span class="details">Pet Parent Full Name</span>
-                <input type="text" placeholder="Enter Parent name" name="ownerName" required>
+                <span class="details">User Email</span>
+                <input type="text" placeholder="Enter email address" name="email" required>
               </div>
-              <div class="input-box">
-                <span class="details">Email Address</span>
-                <input type="text" placeholder="Enter parent contact email" name="email" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Pet Name</span>
-                <input type="text" placeholder="What do we call our new friend?" name="petName" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Password</span>
-                <input type="password" placeholder="Choose a password" name="password"  required>
-              </div>
-            </div>
-            <div class="history">
-              <input type="radio" name="history" id="dot-1">
-              <input type="radio" name="history" id="dot-2">
-              <input type="radio" name="history" id="dot-3">
-              <span class="history-title">Past Vet History</span>
-              <div class="category">
-                <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="history">Yes</span>
-              </label>
-              <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="history">No</span>
-              </label>
-              <label for="dot-3">
-                <span class="dot three"></span>
-                <span class="history">Not Sure</span>
-                </label>
-              </div>
-            </div>
-            <div class="button">
-              <input type="submit" value="Welcome To The Family!">
+   	         <div class="button">
+              <input type="submit" value="Submit">
             </div>
           </form>
         </div>
       </div>
-
+      
+      <c:if test="${users ne null}">
+      		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th></th>
+			</tr>
+			<c:forEach var="user" items="${users}">
+				<tr>
+					<td>${user.name}</td>
+					<td>${user.address}</td>
+					<td>${user.phone}</td>
+					<td><a href="${user.email}/pets" class="btn btn-primary">View Pets</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+    </c:if>
 </body>
 
 

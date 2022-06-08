@@ -26,9 +26,20 @@ public class Pet {
 	@OneToMany(mappedBy="pet")
 	private Set<Appointment> appointments;
 
+	public Pet() {
+		
+	}
 	public Pet(String name, User user) {
+		super();
 		this.name = name;
 		this.user = user;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -55,8 +66,12 @@ public class Pet {
 	}
 
 	public String getDateOfBirth() {
-		String date = dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		return date;
+		if(dateOfBirth != null) {
+			String date = dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			return date;
+		} else {
+			return "";
+		}
 	}
 
 	public void setDateOfBirth(String dateOfBirth) {

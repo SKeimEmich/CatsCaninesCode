@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,5 +49,21 @@ public class MainController {
 		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", petName, userName));
 	}
 	
+	@RequestMapping("/userlookup")
+	public ModelAndView userLookup() {
+		return new ModelAndView("userlookup");
+	}
 	
+	@PostMapping("/userlookup")
+	public ModelAndView showUserLookup(
+			@RequestParam("email") String email) {
+		List<User> userList = uRepo.findByEmail(email);
+		return new ModelAndView("userlookup", "users", userList);
+	}
+	
+	@RequestMapping("{email}/pets")
+	public ModelAndView editTask(@PathVariable("email") User user) {
+		List<Pet> petList = pRepo.findByUserEmail(user.getEmail());
+		return new ModelAndView("petlist", "pets", petList);
+	}
 }
