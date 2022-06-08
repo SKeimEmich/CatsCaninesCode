@@ -15,33 +15,8 @@
 
 
 <body>
+	<%@ include file="../partials/header.jsp"%>
     
-    <ul class="nav">
-    	<li class="nav-item">
-        	<a class="nav-link" href="index2">Cats & Canines </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="adminpetpage">Pet Page Edit</a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="register">Register New</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="userlookup">User Lookup</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> - </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Doug Biske </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Sam Keim </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Selwa Alsomairy </a> 
-        </li>
-      </ul>
 
       <div class="container">
 		<c:if test="${message ne null}">

@@ -14,17 +14,8 @@
 
 
 <body>
-    
-    <div class="sidenav">
-        <a href="index2.html">Cats & Canines </a> <!--will add a logo here once I draw it out-->
-        <a href="adminpetpage.html">Pet Page Edit</a>
-        <a href="register.html">Register New</a> 
-        <a href="#"> - </a>
-        <a href="#"> Doug Biske </a>
-        <a href="#"> Sam Keim </a>
-        <a href="#"> Selwa Alsomairy </a> 
-      </div>
-      
+    <%@ include file="../partials/header.jsp"%>
+  
       <!-- Page content -->
       <div class="main">
         ...

@@ -8,21 +8,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Cats and Canines</title>
 </head>
 <body>
+	<%@ include file="../partials/header.jsp"%>
 
     <div class="pumpkinmain">
-		<nav>
-			<h2 class="logo">Cats & <span> Canines</span></h2>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
-				<li><a href="adminlogin.html">Admin</a></li>
-			</ul>
-			<a href="login.html" class="userlogin">Login</a>
-		</nav>
 
 		<div class="content">
 			<h4>Hello, we are </h4>

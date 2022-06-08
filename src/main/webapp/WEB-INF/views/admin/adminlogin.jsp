@@ -13,21 +13,8 @@
 </head>
 
 <body>
-    
-    <div class="sidenav">
-        <a href="index.html">Cats & Canines </a> <!--will add a logo here once I draw it out-->
-        <!-- <a href="about.html">About</a> -->
-        <!-- <a href="services.html">Services</a> -->
-        <a href="login.html">Login</a>
-        <a href="adminlogin.html">Admin</a>   
-        <a href="contact.html">Contact</a>
-        <a href="admin.html">AdminPass</a>
-        <a href="#"> - </a>
-        <a href="#"> Doug Biske </a>
-        <a href="#"> Sam Keim </a>
-        <a href="#"> Selwa Alsomairy </a> 
-      </div>
-      
+    <%@ include file="../partials/header.jsp"%>
+  
       <div class="centerbox">
         <div class="title">
            Administration
