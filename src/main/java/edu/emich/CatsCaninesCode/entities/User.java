@@ -31,6 +31,16 @@ public class User {
 		this.password = password;
 	}
 	
+	public User(String name, String email, String address, String password, String phone, String acctType) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.address = address;
+		this.password = password;
+		this.phone = phone;
+		this.acctType = acctType;
+	}
+	
 	public String getName() {
 		return name;
 	}

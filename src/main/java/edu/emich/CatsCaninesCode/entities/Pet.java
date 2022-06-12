@@ -19,7 +19,8 @@ public class Pet {
 	private String name;
 	private String species;
 	private String description;
-	private LocalDate dateOfBirth;
+	private String dateOfBirth;
+	private String ownerEmail;
 	@ManyToOne
 	private User user;
 	
@@ -33,6 +34,16 @@ public class Pet {
 		super();
 		this.name = name;
 		this.user = user;
+	}
+	
+	public Pet(String name, String date, String species, String description, String email) {
+		super();
+		this.name = name;
+		this.dateOfBirth = date;
+		this.species = species;
+		this.description = description;
+		this.ownerEmail = email;
+		//this.user = user;
 	}
 	
 	public Long getId() {
@@ -64,21 +75,38 @@ public class Pet {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getEmail() {
+		return ownerEmail;
+	}
 
+	public void setEmail(String email) {
+		this.ownerEmail = email;
+	}
+
+//	public String getDateOfBirth() {
+//		if(dateOfBirth != null) {
+//			String date = dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//			return date;
+//		} else {
+//			return "";
+//		}
+//	}
+//
+//	public void setDateOfBirth(String dateOfBirth) {
+//		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		LocalDate setDueDate = LocalDate.parse(dateOfBirth, format);
+//		this.dateOfBirth = setDueDate;
+//	}
+	
 	public String getDateOfBirth() {
-		if(dateOfBirth != null) {
-			String date = dateOfBirth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			return date;
-		} else {
-			return "";
-		}
+	return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate setDueDate = LocalDate.parse(dateOfBirth, format);
-		this.dateOfBirth = setDueDate;
-	}
+
+public void setDateOfBirth(String dateOfBirth) {
+	this.dateOfBirth = dateOfBirth;
+}
 
 	public User getOwner() {
 		return user;

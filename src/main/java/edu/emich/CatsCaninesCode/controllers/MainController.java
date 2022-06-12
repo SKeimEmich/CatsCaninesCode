@@ -1,6 +1,7 @@
 package edu.emich.CatsCaninesCode.controllers;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,56 @@ public class MainController {
 		pRepo.save(pet);
 		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", petName, userName));
 	}
+	
+	
+	@RequestMapping("/admin/createowner")
+	public ModelAndView createowner() {
+		return new ModelAndView("/admin/createowner");
+	}
+	
+	@PostMapping("/admin/createowner")
+	public ModelAndView postNewOwner(
+			@RequestParam("ownerName") String name,
+			@RequestParam("ownerEmail") String email,
+			@RequestParam("ownerAddress") String address,
+			@RequestParam("ownerPhoneNumber") String phone,
+			@RequestParam("ownerPassword") String password,
+			@RequestParam("history") String acctType
+			) {
+		
+		
+		User user = new User(name, email, address, password, phone, acctType);
+		uRepo.save(user);
+		List<User> userList = uRepo.findByEmail(email);
+		//Pet pet = new Pet(petName, userList.get(0));
+		//pRepo.save(pet);
+		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+	}
+	
+	
+	@RequestMapping("/admin/createpet")
+	public ModelAndView createpet() {
+		return new ModelAndView("/admin/createpet");
+	}
+	
+	@PostMapping("/admin/createpet")
+	public ModelAndView postNewPet(
+			@RequestParam("petName") String name,
+			@RequestParam("petDOB") String dob,
+			@RequestParam("petSpecies") String species,
+			@RequestParam("petDescription") String description,
+			@RequestParam("ownerEmail") String email
+			) {
+		
+		
+		Pet pet = new Pet(name, dob, species, description, email);
+		pRepo.save(pet);
+		List<User> userList = uRepo.findByEmail(email);
+		//Pet pet = new Pet(petName, userList.get(0));
+		//pRepo.save(pet);
+		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+	}
+	
 	
 	@RequestMapping("/userlookup")
 	public ModelAndView userLookup() {
