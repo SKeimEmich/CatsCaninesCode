@@ -31,7 +31,7 @@ public class MainController {
 //		return new ModelAndView("index", "message", "Hello World!");
 		return new ModelAndView("register");
 	}
-
+	
 	@PostMapping("/")
 	public ModelAndView postNewPet(
 			@RequestParam("ownerName") String userName,
