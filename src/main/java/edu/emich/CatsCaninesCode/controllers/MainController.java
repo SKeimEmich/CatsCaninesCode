@@ -28,7 +28,11 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
-//		return new ModelAndView("index", "message", "Hello World!");
+		return new ModelAndView("home/index", "message", "Hello World!");
+//		return new ModelAndView("register");
+	}
+	@RequestMapping("/register")
+	public ModelAndView register() {
 		return new ModelAndView("register");
 	}
 	
@@ -64,6 +68,6 @@ public class MainController {
 	@RequestMapping("{email}/pets")
 	public ModelAndView editTask(@PathVariable("email") User user) {
 		List<Pet> petList = pRepo.findByUserEmail(user.getEmail());
-		return new ModelAndView("petlist", "pets", petList);
+		return new ModelAndView("petlookup", "pets", petList);
 	}
 }
