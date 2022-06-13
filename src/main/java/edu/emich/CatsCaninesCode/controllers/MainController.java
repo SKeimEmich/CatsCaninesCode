@@ -48,7 +48,7 @@ public class MainController {
 		
 		User user = new User(userName, email, password);
 		uRepo.save(user);
-		List<User> userList = uRepo.findByEmail(email);
+		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		Pet pet = new Pet(petName, userList.get(0));
 		pRepo.save(pet);
 		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", petName, userName));
@@ -73,7 +73,7 @@ public class MainController {
 		
 		User user = new User(name, email, address, password, phone, acctType);
 		uRepo.save(user);
-		List<User> userList = uRepo.findByEmail(email);
+		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		//Pet pet = new Pet(petName, userList.get(0));
 		//pRepo.save(pet);
 		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
@@ -94,7 +94,7 @@ public class MainController {
 			@RequestParam("ownerEmail") String email
 			) {
 		
-		List<User> userList = uRepo.findByEmail(email);
+		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		if(userList.size() == 0) {
 			// no user found with this email, abort
 			System.exit(0);
@@ -114,13 +114,13 @@ public class MainController {
 	@PostMapping("/userlookup")
 	public ModelAndView showUserLookup(
 			@RequestParam("email") String email) {
-		List<User> userList = uRepo.findByEmail(email);
+		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		return new ModelAndView("userlookup", "users", userList);
 	}
 	
 	@RequestMapping("{email}/pets")
 	public ModelAndView editTask(@PathVariable("email") User user) {
-		List<Pet> petList = pRepo.findByUserEmail(user.getEmail());
+		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(user.getEmail());
 		return new ModelAndView("petlookup", "pets", petList);
 	}
 }

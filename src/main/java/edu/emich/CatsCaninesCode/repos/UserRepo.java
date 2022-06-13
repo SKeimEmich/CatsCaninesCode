@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.emich.CatsCaninesCode.entities.User;
 
 public interface UserRepo extends JpaRepository<User, String>{
-	List<User> findByEmail(String email);
+	List<User> findByEmailIgnoreCase(String email);
 	List<User> findByPhone(String phone);
 }
