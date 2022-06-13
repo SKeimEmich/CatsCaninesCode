@@ -94,12 +94,14 @@ public class MainController {
 			@RequestParam("ownerEmail") String email
 			) {
 		
-		
-		Pet pet = new Pet(name, dob, species, description, email);
-		pRepo.save(pet);
 		List<User> userList = uRepo.findByEmail(email);
-		//Pet pet = new Pet(petName, userList.get(0));
-		//pRepo.save(pet);
+		if(userList.size() == 0) {
+			// no user found with this email, abort
+			System.exit(0);
+		}
+		User user = userList.get(0);
+		Pet pet = new Pet(name, dob, species, description, user);
+		pRepo.save(pet);
 		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
 	}
 	

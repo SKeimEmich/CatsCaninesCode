@@ -20,7 +20,6 @@ public class Pet {
 	private String species;
 	private String description;
 	private String dateOfBirth;
-	private String ownerEmail;
 	@ManyToOne
 	private User user;
 	
@@ -36,14 +35,13 @@ public class Pet {
 		this.user = user;
 	}
 	
-	public Pet(String name, String date, String species, String description, String email) {
+	public Pet(String name, String date, String species, String description, User user) {
 		super();
 		this.name = name;
 		this.dateOfBirth = date;
 		this.species = species;
 		this.description = description;
-		this.ownerEmail = email;
-		//this.user = user;
+		this.user = user;
 	}
 	
 	public Long getId() {
@@ -74,14 +72,6 @@ public class Pet {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	public String getEmail() {
-		return ownerEmail;
-	}
-
-	public void setEmail(String email) {
-		this.ownerEmail = email;
 	}
 
 //	public String getDateOfBirth() {
