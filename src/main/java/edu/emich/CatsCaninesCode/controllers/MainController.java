@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.emich.CatsCaninesCode.entities.Appointment;
 import edu.emich.CatsCaninesCode.entities.Pet;
 import edu.emich.CatsCaninesCode.entities.User;
 import edu.emich.CatsCaninesCode.repos.PetRepo;
@@ -26,6 +27,11 @@ public class MainController {
 	
 	@Autowired
 	private UserRepo uRepo;
+	
+//***********************I think this should work, but is not*******************************************	
+//	@Autowired
+//	private AppointmentRepo aRepo;
+//******************************************************************************************************
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -76,7 +82,7 @@ public class MainController {
 		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		//Pet pet = new Pet(petName, userList.get(0));
 		//pRepo.save(pet);
-		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+		return new ModelAndView("/admin/createowner", "message", String.format("%s registered successfully! Thank you %s!", name, name));
 	}
 	
 	
@@ -102,7 +108,31 @@ public class MainController {
 		User user = userList.get(0);
 		Pet pet = new Pet(name, dob, species, description, user);
 		pRepo.save(pet);
-		return new ModelAndView("register", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+		return new ModelAndView("/admin/createpet", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+	}
+	
+	@RequestMapping("/admin/createappointment")
+	public ModelAndView createappointment() {
+		return new ModelAndView("/admin/createappointment");
+	}
+	
+	@PostMapping("/admin/createappointment")
+	public ModelAndView postNewAppointment(
+			@RequestParam("petID") String id,
+			@RequestParam("appointmentDate") String date,
+			@RequestParam("amountOwed") double owed,
+			@RequestParam("amountPaid") double paid
+			) {
+		
+//		List<User> userList = uRepo.findByEmailIgnoreCase(email);
+//		if(userList.size() == 0) {
+//			// no user found with this email, abort
+//			System.exit(0);
+//		}
+//		User user = userList.get(0);
+		Appointment appointment = new Appointment(id, date, owed, paid);
+		//aRepo.save(appointment);
+		return new ModelAndView("Appointment Confirmed!");
 	}
 	
 	
