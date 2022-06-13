@@ -102,6 +102,7 @@ public class Appointment {
 
 	public void setRecords(Set<Record> records) {
 		this.records = records;
+		//
 	}
 
 	@Override
