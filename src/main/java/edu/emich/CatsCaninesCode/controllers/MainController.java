@@ -125,8 +125,8 @@ public class MainController {
 	public ModelAndView postNewAppointment(
 			@RequestParam("date") String date,
 			@RequestParam("amtOwed") String owed,
-			@RequestParam("amtPaid") String paid
-//			@RequestParam("petID") String petID
+			@RequestParam("amtPaid") String paid,
+			@RequestParam("petID") String id
 			) {
 		
 //		List<User> petList = pRepo.findByIDIgnoreCase(petID);
@@ -137,7 +137,7 @@ public class MainController {
 //		User user = userList.get(0);
 		Appointment appointment = new Appointment(date, owed, paid);
 		aRepo.save(appointment);
-		return new ModelAndView("/admin/createappointment", "message", String.format("Appointment on %s registered successfully! Thank you %s!", date));
+		return new ModelAndView("/admin/createappointment", "message", String.format("Appointment on %s registered successfully! Thank you!", date));
 	}
 	
 //*****************************************************************************************

@@ -17,6 +17,9 @@ public class Appointment {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+//I think I need this
+//	private long pet_id;
+	
 //	private LocalDate date;
 	private String date;
 	
@@ -32,6 +35,7 @@ public class Appointment {
 	
 	public Appointment(String date, String amtOwed, String amtPaid) {
 		super();
+//		this.pet_id = Long.parseLong(pet_id);
 		this.date = date;
 		this.amtOwed = Double.parseDouble(amtOwed);
 		this.amtPaid = Double.parseDouble(amtPaid);
@@ -45,6 +49,14 @@ public class Appointment {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+//	public Long getPetId() {
+//		return pet_id;
+//	}
+//
+//	public void setPetId(long pet_id) {
+//		this.pet_id = pet_id;
+//	}
 
 	public String getDate() {
 //		String date = this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -76,13 +88,13 @@ public class Appointment {
 	}
 	
 
-	public Pet getPet() {
-		return pet;
-	}
-
-	public void setPet(Pet pet) {
-		this.pet = pet;
-	}
+//	public Pet getPet() {
+//		return pet;
+//	}
+//
+//	public void setPet(Pet pet) {
+//		this.pet = pet;
+//	}
 
 	public Set<Record> getRecords() {
 		return records;

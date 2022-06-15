@@ -55,11 +55,17 @@
         <div class="content">
           <form method="post">
             <div class="user-details">
+            
+              <div class="input-box">
+                <span class="details">Pet ID</span>
+                <input type="text" placeholder="Enter Pet ID" name="petID" required>
+              </div>
+            
               <div class="input-box">
                 <span class="details">Date</span>
-                <input type="date" name="date" value="2022-6-22" required>
-                
+                <input type="datetime-local" name="date" value="2022-6-22" required>    
               </div>
+              
               <div class="input-box">
                 <span class="details">Amount Owed</span>
                 <input type="number" step=0.01 placeholder="Enter amount owed" name="amtOwed" required>
