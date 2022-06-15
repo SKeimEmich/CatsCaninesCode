@@ -56,8 +56,8 @@
           <form method="post">
             <div class="user-details">
               <div class="input-box">
-                <span class="details">New Pet Name</span>
-                <input type="text" placeholder="Enter New Pet Name" name="petName" required>
+                <span class="details">Pet Name</span>
+                <input type="text" placeholder="Enter Pet Name" name="petName" required>
               </div>
               <div class="input-box">
                 <span class="details">Date of Birth</span>
@@ -65,16 +65,16 @@
                 
               </div>
               <div class="input-box">
-                <span class="details">New Pet Species</span>
-                <input type="text" placeholder="Enter New Pet Species" name="petSpecies" required>
+                <span class="details">Pet Species</span>
+                <input type="text" placeholder="Enter Pet Species" name="petSpecies" required>
               </div>
               <div class="input-box">
-                <span class="details">New Pet Description</span>
-                <input type="text" placeholder="Enter New Pet Description" name="petDescription" required>
+                <span class="details">Pet Description</span>
+                <input type="text" placeholder="Enter Pet Description" name="petDescription" required>
               </div>
               <div class="input-box">
-                <span class="details">New Pet Owner's Email</span>
-                <input type="password" placeholder="Pet Owner's Email Address" name="ownerEmail"  required>
+                <span class="details">Pet Owner's Email</span>
+                <input type="password" placeholder="Enter Pet Owner's Email Address" name="ownerEmail"  required>
               </div>
             </div>
  

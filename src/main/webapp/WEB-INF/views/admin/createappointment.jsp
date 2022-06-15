@@ -62,11 +62,11 @@
               </div>
               <div class="input-box">
                 <span class="details">Amount Owed</span>
-                <input type="number" placeholder="Enter amount owed" name="amtOwed" required>
+                <input type="number" step=0.01 placeholder="Enter amount owed" name="amtOwed" required>
               </div>
               <div class="input-box">
                 <span class="details">Amount Paid</span>
-                <input type="number" placeholder="Enter amount paid" name="amtPaid" required>
+                <input type="number" step=0.01 placeholder="Enter amount paid" name="amtPaid" required>
               </div>
 
             <div class="button">
