@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.emich.CatsCaninesCode.entities.Pet;
 import edu.emich.CatsCaninesCode.entities.User;
 import edu.emich.CatsCaninesCode.entities.Appointment;
+import edu.emich.CatsCaninesCode.entities.Record;
 import edu.emich.CatsCaninesCode.repos.PetRepo;
 import edu.emich.CatsCaninesCode.repos.UserRepo;
 import edu.emich.CatsCaninesCode.repos.AppointmentRepo;
+import edu.emich.CatsCaninesCode.repos.RecordRepo;
 
 @Controller
 public class MainController {
@@ -31,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	private AppointmentRepo aRepo;
+	
+	@Autowired
+	private RecordRepo rRepo;
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -142,6 +147,36 @@ public class MainController {
 	
 //*****************************************************************************************
 	
+	
+//****************create record controller*************************************************
+	@RequestMapping("/admin/createrecord")
+	public ModelAndView createrecord() {
+		return new ModelAndView("/admin/createrecord");
+	}
+	
+	
+	@PostMapping("/admin/createrecord")
+	public ModelAndView postNewRecord(
+			@RequestParam("serviceCode") String code,
+			@RequestParam("renewalDate") String date,
+			@RequestParam("appointmentID") String id,
+			@RequestParam("cost") String cost,
+			@RequestParam("description") String description
+			) {
+		
+//		List<User> petList = pRepo.findByIDIgnoreCase(petID);
+//		if(userList.size() == 0) {
+//			// no user found with this email, abort
+//			System.exit(0);
+//		}
+//		User user = userList.get(0);
+		Record record = new Record(code, date, id, cost, description);
+		rRepo.save(record);
+		return new ModelAndView("/admin/createrecord", "message", String.format("%s record registered successfully! Thank you!", description));
+	}
+	
+//*****************************************************************************************
+
 
 	@RequestMapping("/userlookup")
 	public ModelAndView userLookup() {

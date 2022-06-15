@@ -56,42 +56,27 @@
           <form method="post">
             <div class="user-details">
               <div class="input-box">
-                <span class="details">Pet Parent Full Name</span>
-                <input type="text" placeholder="Enter Parent name" name="ownerName" required>
+                <span class="details">Appointment ID</span>
+                <input type="text" placeholder="Enter appointment ID" name="appointmentID" required>
               </div>
               <div class="input-box">
-                <span class="details">Email Address</span>
-                <input type="text" placeholder="Enter parent contact email" name="email" required>
+                <span class="details">Service Code</span>
+                <input type="text" placeholder="Enter service code" name="serviceCode" required>
               </div>
               <div class="input-box">
-                <span class="details">Pet Name</span>
-                <input type="text" placeholder="What do we call our new friend?" name="petName" required>
+                <span class="details">Description</span>
+                <input type="text" placeholder="Enter record description" name="description" required>
+              </div>              
+              <div class="input-box">
+                <span class="details">Date</span>
+                <input type="date" name="renewalDate" value="2022-6-22" required>    
               </div>
               <div class="input-box">
-                <span class="details">Password</span>
-                <input type="password" placeholder="Choose a password" name="password"  required>
+                <span class="details">Cost</span>
+                <input type="number" step=0.01 placeholder="Enter cost" name="cost" required>
               </div>
             </div>
-            <div class="history">
-              <input type="radio" name="history" id="dot-1">
-              <input type="radio" name="history" id="dot-2">
-              <input type="radio" name="history" id="dot-3">
-              <span class="history-title">Past Vet History</span>
-              <div class="category">
-                <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="history">Yes</span>
-              </label>
-              <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="history">No</span>
-              </label>
-              <label for="dot-3">
-                <span class="dot three"></span>
-                <span class="history">Not Sure</span>
-                </label>
-              </div>
-            </div>
+            
             <div class="button">
               <input type="submit" value="Welcome To The Family!">
             </div>
