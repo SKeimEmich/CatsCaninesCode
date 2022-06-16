@@ -56,20 +56,20 @@
           <form method="post">
             <div class="user-details">
               <div class="input-box">
-                <span class="details">New Owner Full Name</span>
-                <input type="text" placeholder="Enter New Owner Full Name" name="ownerName" required>
+                <span class="details">Full Name</span>
+                <input type="text" placeholder="Enter Full Name" name="ownerName" required>
               </div>
               <div class="input-box">
                 <span class="details">Email Address</span>
-                <input type="text" placeholder="Enter New Owner Contact Email" name="ownerEmail" required>
+                <input type="text" placeholder="Enter Contact Email" name="ownerEmail" required>
               </div>
               <div class="input-box">
                 <span class="details">Address</span>
-                <input type="text" placeholder="Enter New Owner Address" name="ownerAddress" required>
+                <input type="text" placeholder="Enter Address" name="ownerAddress" required>
               </div>
               <div class="input-box">
                 <span class="details">Phone Number</span>
-                <input type="text" placeholder="Enter New Owner Phone Number" name="ownerPhoneNumber" required>
+                <input type="text" placeholder="Enter Phone Number" name="ownerPhoneNumber" required>
               </div>
               <div class="input-box">
                 <span class="details">Password</span>
