@@ -108,17 +108,28 @@ public class MainController {
 	
 	@RequestMapping("/userlookup")
 	public ModelAndView userLookup() {
-		return new ModelAndView("userlookup");
+		return new ModelAndView("lookup/userlookup");
 	}
+	
+//	@PostMapping("/userlookup")
+//	public ModelAndView showUserLookup(
+//			@RequestParam("email") String email) {
+//		List<User> userList = uRepo.findByEmailIgnoreCase(email);
+//		return new ModelAndView("userlookup", "users", userList);
+//	}
 	
 	@PostMapping("/userlookup")
 	public ModelAndView showUserLookup(
-			@RequestParam("email") String email) {
-		List<User> userList = uRepo.findByEmailIgnoreCase(email);
-		return new ModelAndView("userlookup", "users", userList);
+			@RequestParam("email") User user) {
+//		List<User> userList = uRepo.findByEmailIgnoreCase(email);
+//		return new ModelAndView("userlookup", "users", userList);
+		System.out.println(user);
+		System.out.println(user.toString());
+		System.exit(0);
+		return null;
 	}
-	
-	@RequestMapping("{email}/pets")
+
+	@RequestMapping("/{email}/pets")
 	public ModelAndView editTask(@PathVariable("email") User user) {
 		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(user.getEmail());
 		return new ModelAndView("petlookup", "pets", petList);
