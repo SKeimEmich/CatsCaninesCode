@@ -16,14 +16,9 @@ public class Appointment {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+		
+	private LocalDate date;
 	
-//I think I need this
-//	private long pet_id;
-	
-//	private LocalDate date;
-	private String date;
-	
-// 	temporarily removed attributes - Sam Keim
 	private double amtOwed;
 	private double amtPaid;
 	
@@ -33,13 +28,16 @@ public class Appointment {
 	@OneToMany(mappedBy="appointment")
 	private Set<Record> records;
 	
-	public Appointment(String date, String amtOwed, String amtPaid) {
+	public Appointment() {
+		
+	}
+	
+	public Appointment(String date, String amtOwed, String amtPaid, Pet pet) {
 		super();
-//		this.pet_id = Long.parseLong(pet_id);
-		this.date = date;
+		setDate(date);
 		this.amtOwed = Double.parseDouble(amtOwed);
 		this.amtPaid = Double.parseDouble(amtPaid);
-
+		this.pet = pet;
 	}
 
 	public Long getId() {
@@ -50,23 +48,16 @@ public class Appointment {
 		this.id = id;
 	}
 	
-//	public Long getPetId() {
-//		return pet_id;
-//	}
-//
-//	public void setPetId(long pet_id) {
-//		this.pet_id = pet_id;
-//	}
-
 	public String getDate() {
-//		String date = this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		String date = this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		return date;
 	}
 
 	public void setDate(String date) {
-//		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//		LocalDate setDate = LocalDate.parse(date, format);
-		this.date = date;
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd['T']HH:mm");
+		LocalDate setDate = LocalDate.parse(date, format);
+		this.date = setDate;
+		
 	}
 	
 	public double getAmtOwed() {
@@ -87,14 +78,13 @@ public class Appointment {
 		this.amtPaid = amtPaid;
 	}
 	
+	public Pet getPet() {
+		return pet;
+	}
 
-//	public Pet getPet() {
-//		return pet;
-//	}
-//
-//	public void setPet(Pet pet) {
-//		this.pet = pet;
-//	}
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
 
 	public Set<Record> getRecords() {
 		return records;

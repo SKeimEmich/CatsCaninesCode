@@ -39,15 +39,15 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
-		return new ModelAndView("home/index", "message", "Hello World!");
-//		return new ModelAndView("register");
+		return new ModelAndView("home/index");
 	}
+	
 	@RequestMapping("/register")
 	public ModelAndView register() {
 		return new ModelAndView("register");
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/register")
 	public ModelAndView postNewPet(
 			@RequestParam("ownerName") String userName,
 			@RequestParam("email") String email,
@@ -87,7 +87,7 @@ public class MainController {
 		List<User> userList = uRepo.findByEmailIgnoreCase(email);
 		//Pet pet = new Pet(petName, userList.get(0));
 		//pRepo.save(pet);
-		return new ModelAndView("/admin/createowner", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+		return new ModelAndView("/admin/createowner", "message", String.format("New account for %s registered successfully!", name));
 	}
 //*****************************************************************************************
 	
@@ -115,12 +115,13 @@ public class MainController {
 		User user = userList.get(0);
 		Pet pet = new Pet(name, dob, species, description, user);
 		pRepo.save(pet);
-		return new ModelAndView("/admin/createpet", "message", String.format("%s registered successfully! Thank you %s!", name, name));
+		return new ModelAndView("/admin/createpet", "message", String.format("%s registered successfully! Thank you %s!", name, user.getName()));
 	}
 //*****************************************************************************************
 
 	
 //****************create appointment controller********************************************
+	// TODO not saving time of appointment correctly -- Sam
 	@RequestMapping("/admin/createappointment")
 	public ModelAndView createappointment() {
 		return new ModelAndView("/admin/createappointment");
@@ -131,16 +132,10 @@ public class MainController {
 			@RequestParam("date") String date,
 			@RequestParam("amtOwed") String owed,
 			@RequestParam("amtPaid") String paid,
-			@RequestParam("petID") String id
+			@RequestParam("petID") Pet pet
 			) {
-		
-//		List<User> petList = pRepo.findByIDIgnoreCase(petID);
-//		if(userList.size() == 0) {
-//			// no user found with this email, abort
-//			System.exit(0);
-//		}
-//		User user = userList.get(0);
-		Appointment appointment = new Appointment(date, owed, paid);
+
+		Appointment appointment = new Appointment(date, owed, paid, pet);
 		aRepo.save(appointment);
 		return new ModelAndView("/admin/createappointment", "message", String.format("Appointment on %s registered successfully! Thank you!", date));
 	}
@@ -159,7 +154,7 @@ public class MainController {
 	public ModelAndView postNewRecord(
 			@RequestParam("serviceCode") String code,
 			@RequestParam("renewalDate") String date,
-			@RequestParam("appointmentID") String id,
+			@RequestParam("appointmentID") Appointment appointment,
 			@RequestParam("cost") String cost,
 			@RequestParam("description") String description
 			) {
@@ -170,7 +165,7 @@ public class MainController {
 //			System.exit(0);
 //		}
 //		User user = userList.get(0);
-		Record record = new Record(code, date, id, cost, description);
+		Record record = new Record(code, date, cost, description, appointment);
 		rRepo.save(record);
 		return new ModelAndView("/admin/createrecord", "message", String.format("%s record registered successfully! Thank you!", description));
 	}
@@ -192,18 +187,14 @@ public class MainController {
 	
 	@PostMapping("/userlookup")
 	public ModelAndView showUserLookup(
-			@RequestParam("email") User user) {
-//		List<User> userList = uRepo.findByEmailIgnoreCase(email);
-//		return new ModelAndView("userlookup", "users", userList);
-		System.out.println(user);
-		System.out.println(user.toString());
-		System.exit(0);
-		return null;
+			@RequestParam("email") String email) {
+		List<User> userList = uRepo.findByEmailIgnoreCase(email);
+		return new ModelAndView("lookup/userlookup", "users", userList);
 	}
 
 	@RequestMapping("/{email}/pets")
 	public ModelAndView editTask(@PathVariable("email") User user) {
 		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(user.getEmail());
-		return new ModelAndView("petlookup", "pets", petList);
+		return new ModelAndView("lookup/petlookup", "pets", petList);
 	}
 }

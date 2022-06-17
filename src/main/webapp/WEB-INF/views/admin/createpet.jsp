@@ -74,7 +74,7 @@
               </div>
               <div class="input-box">
                 <span class="details">Pet Owner's Email</span>
-                <input type="password" placeholder="Enter Pet Owner's Email Address" name="ownerEmail"  required>
+                <input type="text" placeholder="Enter Pet Owner's Email Address" name="ownerEmail"  required>
               </div>
             </div>
  

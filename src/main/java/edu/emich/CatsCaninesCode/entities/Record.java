@@ -13,22 +13,21 @@ public class Record {
 
 	private int serviceCode;
 	private String date;
-	private int appointmentID;
 	private String description;
-	private int monthsOfEffect; // recorded as number of months
+//	private int monthsOfEffect; // recorded as number of months
 	private double cost; // Temporarily removed - Sam Keim
 	
 	@ManyToOne
 	private Appointment appointment;
 
-	public Record(String code, String date, String id, String cost, String description)
+	public Record(String code, String date, String cost, String description, Appointment appointment)
 	{
 		super();
 		this.serviceCode = Integer.valueOf(code);
 		this.date = date;
-		this.appointmentID = Integer.valueOf(id);
 		this.cost = Double.parseDouble(cost);
 		this.description = description;
+		this.appointment = appointment;
 	}
 	
 	public Long getId() {
@@ -59,14 +58,6 @@ public class Record {
 		this.date = date;
 	}
 	
-	public int getAppointmentID() {
-		return appointmentID;
-	}
-
-	public void setAppointmentID(int appointmentID) {
-		this.appointmentID = appointmentID;
-	}
-	
 	public double getCost() {
 		return cost;
 	}
@@ -83,14 +74,14 @@ public class Record {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public int getMonthsOfEffect() {
-		return monthsOfEffect;
-	}
-
-	public void setMonthsOfEffect(int monthsOfEffect) {
-		this.monthsOfEffect = monthsOfEffect;
-	}
+//
+//	public int getMonthsOfEffect() {
+//		return monthsOfEffect;
+//	}
+//
+//	public void setMonthsOfEffect(int monthsOfEffect) {
+//		this.monthsOfEffect = monthsOfEffect;
+//	}
 
 	public Appointment getAppointment() {
 		return appointment;
@@ -102,8 +93,9 @@ public class Record {
 
 	@Override
 	public String toString() {
-		return "Record [serviceCode=" + serviceCode + ", description=" + description + ", monthsOfEffect="
-				+ monthsOfEffect + ", appointment=" + appointment + "]";
+		return "Record [serviceCode=" + serviceCode + ", description=" + description + 
+//				", monthsOfEffect=" + monthsOfEffect +
+				", appointment=" + appointment + "]";
 	}
 	
 }

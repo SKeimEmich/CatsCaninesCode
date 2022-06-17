@@ -57,7 +57,7 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Appointment ID</span>
-                <input type="text" placeholder="Enter appointment ID" name="appointmentID" required>
+                <input type="number" placeholder="Enter appointment ID" name="appointmentID" required>
               </div>
               <div class="input-box">
                 <span class="details">Service Code</span>
