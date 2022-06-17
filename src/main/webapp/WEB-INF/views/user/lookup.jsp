@@ -19,9 +19,9 @@
     
 
       <div class="container">
-		<c:if test="${message ne null}">
-	      <div class="alert alert-success" role="alert">
-				<h4>${message}</h4>
+		<c:if test="${danger ne null}">
+	      <div class="alert alert-danger" role="alert">
+				<h4>${danger}</h4>
 		  </div>
       	</c:if>      	
       	
@@ -39,24 +39,37 @@
         </div>
       </div>
       
-      <c:if test="${users ne null}">
+      <c:if test="${user ne null}">
+      <h2>User Details</h2>
+		<p>
+	 		<b>Name:</b> ${user.name}<br/>
+			<b>Address:</b> ${user.address}<br/>
+			<b>Phone:</b> ${user.phone}<br/>
+		</p>
+    </c:if>
+    
+    <c:if test="${pets ne null}">
+    <h3>Pets</h3>
       		<table class="table">
 			<tr>
 				<th>Name</th>
-				<th>Address</th>
-				<th>Phone</th>
+				<th>Species</th>
+				<th>Description</th>
+				<th>Date of Birth</th>
 				<th></th>
 			</tr>
-			<c:forEach var="user" items="${users}">
+			<c:forEach var="pet" items="${pets}">
 				<tr>
-					<td>${user.name}</td>
-					<td>${user.address}</td>
-					<td>${user.phone}</td>
-					<td><a href="${user.email}/pets" class="btn btn-primary">View Pets</a></td>
+					<td>${pet.name}</td>
+					<td>${pet.species}</td>
+					<td>${pet.description}</td>
+					<td>${pet.dateOfBirth}</td>
+					<td><a href="/appointment/view/${pet.id}" class="btn btn-primary">Appointments</a></td>
 				</tr>
 			</c:forEach>
 		</table>
     </c:if>
+    
 </body>
 
 
