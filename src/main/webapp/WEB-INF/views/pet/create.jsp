@@ -45,9 +45,14 @@
 			
       
       <div class="container">
-		<c:if test="${message ne null}">
+		<c:if test="${danger ne null}">
+	      <div class="alert alert-danger" role="alert">
+				<h4>${danger}</h4>
+		  </div>
+      	</c:if>      	
+		<c:if test="${success ne null}">
 	      <div class="alert alert-success" role="alert">
-				<h4>${message}</h4>
+				<h4>${success}</h4>
 		  </div>
       	</c:if>      	
       	
@@ -71,10 +76,6 @@
               <div class="input-box">
                 <span class="details">Pet Description</span>
                 <input type="text" placeholder="Enter Pet Description" name="petDescription" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Pet Owner's Email</span>
-                <input type="text" placeholder="Enter Pet Owner's Email Address" name="ownerEmail"  required>
               </div>
             </div>
  

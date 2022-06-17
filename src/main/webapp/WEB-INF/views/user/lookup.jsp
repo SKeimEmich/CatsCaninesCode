@@ -45,6 +45,7 @@
 	 		<b>Name:</b> ${user.name}<br/>
 			<b>Address:</b> ${user.address}<br/>
 			<b>Phone:</b> ${user.phone}<br/>
+			<a href="/pet/create/${user.email}" class="btn btn-primary">Add New Pet</a>
 		</p>
     </c:if>
     
@@ -64,7 +65,7 @@
 					<td>${pet.species}</td>
 					<td>${pet.description}</td>
 					<td>${pet.dateOfBirth}</td>
-					<td><a href="/appointment/view/${pet.id}" class="btn btn-primary">Appointments</a></td>
+					<td><a href="/pet/view/${pet.id}" class="btn btn-primary">Details</a></td>
 				</tr>
 			</c:forEach>
 		</table>

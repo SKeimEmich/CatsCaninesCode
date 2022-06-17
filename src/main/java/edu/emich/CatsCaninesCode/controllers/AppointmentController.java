@@ -34,9 +34,8 @@ public class AppointmentController {
 	
 	
 //****************create appointment controller********************************************
-	// TODO not saving time of appointment correctly -- Sam
-	@RequestMapping("/create")
-	public ModelAndView createappointment() {
+	@RequestMapping("/create/{id}")
+	public ModelAndView createappointment(@PathVariable("id") Long id) {
 		return new ModelAndView("/appointment/create");
 	}
 	

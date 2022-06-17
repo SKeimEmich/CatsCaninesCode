@@ -1,7 +1,5 @@
 package edu.emich.CatsCaninesCode.entities;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import javax.persistence.Entity;

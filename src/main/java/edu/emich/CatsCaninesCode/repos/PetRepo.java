@@ -8,5 +8,4 @@ import edu.emich.CatsCaninesCode.entities.Pet;
 
 public interface PetRepo extends JpaRepository<Pet, Long>{
 	List<Pet> findByUserEmailIgnoreCase(String email);
-
 }

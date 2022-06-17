@@ -11,9 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.emich.CatsCaninesCode.entities.Pet;
 import edu.emich.CatsCaninesCode.entities.User;
-import edu.emich.CatsCaninesCode.repos.AppointmentRepo;
 import edu.emich.CatsCaninesCode.repos.PetRepo;
-import edu.emich.CatsCaninesCode.repos.RecordRepo;
 import edu.emich.CatsCaninesCode.repos.UserRepo;
 
 @Controller

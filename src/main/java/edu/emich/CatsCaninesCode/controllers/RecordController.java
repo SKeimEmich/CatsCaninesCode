@@ -59,17 +59,17 @@ public class RecordController {
 	
 //*****************************************************************************************
 	@RequestMapping("/view")
-	public ModelAndView viewAppointment() {
+	public ModelAndView viewRecord() {
 		return new ModelAndView("todo");
 	}
 			
 	@RequestMapping("/edit")
-	public ModelAndView editAppointment() {
+	public ModelAndView editRecord() {
 		return new ModelAndView("todo");
 	}
 	
 	@PostMapping("/edit")
-	public ModelAndView editAppointmentPost() {
+	public ModelAndView editRecordPost() {
 		return new ModelAndView("todo");
 	}
 }

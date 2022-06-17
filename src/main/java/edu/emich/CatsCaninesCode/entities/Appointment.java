@@ -1,6 +1,6 @@
 package edu.emich.CatsCaninesCode.entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
@@ -17,7 +17,7 @@ public class Appointment {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 		
-	private LocalDate date;
+	private LocalDateTime date;
 	
 	private double amtOwed;
 	private double amtPaid;
@@ -55,7 +55,7 @@ public class Appointment {
 
 	public void setDate(String date) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd['T']HH:mm");
-		LocalDate setDate = LocalDate.parse(date, format);
+		LocalDateTime setDate = LocalDateTime.parse(date, format);
 		this.date = setDate;
 		
 	}
