@@ -51,16 +51,11 @@
 		  </div>
       	</c:if>      	
       	
-	    <h2>Create a New Appointment</h2>
+	    <h2>Create a New Appointment for ${pet.name}</h2>
         <div class="content">
           <form method="post">
             <div class="user-details">
-            
-              <div class="input-box">
-                <span class="details">Pet ID</span>
-                <input type="text" placeholder="Enter Pet ID" name="petID" required>
-              </div>
-            
+                        
               <div class="input-box">
                 <span class="details">Date</span>
                 <input type="datetime-local" name="date" value="2022-6-22" required>    

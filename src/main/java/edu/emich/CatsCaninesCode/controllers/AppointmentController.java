@@ -34,22 +34,31 @@ public class AppointmentController {
 	
 	
 //****************create appointment controller********************************************
-	@RequestMapping("/create/{id}")
-	public ModelAndView createappointment(@PathVariable("id") Long id) {
-		return new ModelAndView("/appointment/create");
+	@RequestMapping("/create/{petId}")
+	public ModelAndView createappointment(@PathVariable("petId") Long petId) {
+		// get pet
+		Pet pet = pRepo.findById(petId).orElse(null);
+
+		// check if id is valid
+		if(pet == null) {
+			return new ModelAndView("/appointment/create", "danger", "Invalid pet ID, please try again.");
+		}
+		
+		return new ModelAndView("/appointment/create", "pet", pet);
 	}
 	
-	@PostMapping("/create")
+	@PostMapping("/create/{petId}")
 	public ModelAndView postNewAppointment(
 			@RequestParam("date") String date,
 			@RequestParam("amtOwed") String owed,
 			@RequestParam("amtPaid") String paid,
-			@RequestParam("petID") Pet pet
+			@PathVariable("petId") Pet pet
 			) {
-
-		Appointment appointment = new Appointment(date, owed, paid, pet);
-		aRepo.save(appointment);
-		return new ModelAndView("/appointment/create", "message", String.format("Appointment on %s registered successfully! Thank you!", date));
+		aRepo.save(new Appointment(date, owed, paid, pet));
+		ModelAndView returnView = new ModelAndView("/appointment/create");
+		returnView.addObject("pet", pet);
+		returnView.addObject("message", String.format("Appointment on %s registered successfully! Thank you!", date));
+		return returnView;
 	}
 	
 //*****************************************************************************************

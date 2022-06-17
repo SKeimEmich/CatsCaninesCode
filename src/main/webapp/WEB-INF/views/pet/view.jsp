@@ -52,7 +52,7 @@
 					<td>${appointment.amtOwed}</td>
 					<td>${appointment.amtPaid}</td>
 					<td>${appointment.amtOwed - appointment.amtPaid}</td>
-					<td><a href="/record/view/${appointment.id}" class="btn btn-primary">Records</a></td>
+					<td><a href="/appointment/view/${appointment.id}" class="btn btn-primary">Details</a></td>
 				</tr>
 			</c:forEach>
 		</table>
