@@ -43,18 +43,8 @@
       </ul>
       
 			
-      
-      <div class="container">
-		<c:if test="${danger ne null}">
-	      <div class="alert alert-danger" role="alert">
-				<h4>${danger}</h4>
-		  </div>
-      	</c:if>      	
-		<c:if test="${success ne null}">
-	      <div class="alert alert-success" role="alert">
-				<h4>${success}</h4>
-		  </div>
-      	</c:if>      	
+<%@ include file="../partials/alert.jsp"%>
+     	
       	
 	    <h2>Create a New Pet</h2>
         <div class="content">
@@ -84,7 +74,10 @@
             </div>
           </form>
         </div>
-      </div>
+        <form method="post" action="/user/lookup">
+        	<input type="hidden" value="${email}" name="email">
+        	<input type="submit" value="Back to Owner">
+        </form>
 
 </body>
 

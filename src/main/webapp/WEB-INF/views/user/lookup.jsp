@@ -18,12 +18,8 @@
 	<%@ include file="../partials/header.jsp"%>
     
 
-      <div class="container">
-		<c:if test="${danger ne null}">
-	      <div class="alert alert-danger" role="alert">
-				<h4>${danger}</h4>
-		  </div>
-      	</c:if>      	
+     <%@ include file="../partials/alert.jsp"%>
+	
       	
 	    <h2>User Lookup</h2>
         <div class="content">

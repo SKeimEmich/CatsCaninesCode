@@ -16,14 +16,8 @@
 <body>
 	<%@ include file="../partials/header.jsp"%>
     
+	<%@ include file="../partials/alert.jsp"%>
 
-      <div class="container">
-		<c:if test="${danger ne null}">
-	      <div class="alert alert-danger" role="alert">
-				<h4>${danger}</h4>
-		  </div>
-      	</c:if>   	
-      </div>
       
       <c:if test="${pet ne null}">
       <h2>Pet Details</h2>
@@ -57,7 +51,10 @@
 			</c:forEach>
 		</table>
     </c:if>
-    
+            <form method="post" action="/user/lookup">
+        	<input type="hidden" value="${pet.user.email}" name="email">
+        	<input type="submit" value="Back to User">
+        </form>
 </body>
 
 

@@ -72,13 +72,17 @@ public class UserController {
 		if(user == null) {
 			return new ModelAndView("user/lookup", "danger", String.format("%s not found, please try again.", email));
 		}
+		
 		// User was found, get list of pets
 		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(email);
 		
 		// pass pet list and user to ModelAndView
 		ModelAndView returnView = new ModelAndView("user/lookup");
 		returnView.addObject("user", user);
-		returnView.addObject("pets", petList);
+		
+		if(!petList.isEmpty()){
+			returnView.addObject("pets", petList);
+		}
 		
 		return returnView;
 	}

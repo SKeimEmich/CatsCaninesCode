@@ -37,9 +37,9 @@ public class PetController {
 		User user = uRepo.findByEmailIgnoreCase(email);
 		if(user == null) {
 			// no user found with this email, abort
-			return new ModelAndView("/pet/create", "danger", "User not found.");
+			return new ModelAndView("pet/create", "danger", "User not found.");
 		}
-		return new ModelAndView("/pet/create", "email", email);
+		return new ModelAndView("pet/create", "email", email);
 	}
 	
 	@PostMapping("/create/{email}")
@@ -51,7 +51,11 @@ public class PetController {
 			@PathVariable("email") User user
 			) {
 		pRepo.save(new Pet(name, dob, species, description, user));
-		return new ModelAndView("/pet/create", "success", String.format("%s registered successfully! Thank you %s!", name, user.getName()));
+		ModelAndView returnView = new ModelAndView("pet/create");
+		
+		returnView.addObject("success", String.format("%s registered successfully! Thank you %s!", name, user.getName()));
+		returnView.addObject("email", user.getEmail());
+		return returnView;
 	}
 //*****************************************************************************************
 		
@@ -63,7 +67,7 @@ public class PetController {
 		
 		// pet not found
 		if(pet == null) {
-			return new ModelAndView("/pet/view", "danger", "Pet not found, please try again.");
+			return new ModelAndView("pet/view", "danger", "Pet not found, please try again.");
 		}
 		
 		// Get appointments
@@ -78,7 +82,6 @@ public class PetController {
 		}
 		
 		returnView.addObject("pet", pet);
-
 		return returnView;
 	}
 			

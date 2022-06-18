@@ -1,5 +1,7 @@
 package edu.emich.CatsCaninesCode.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.emich.CatsCaninesCode.entities.Appointment;
 import edu.emich.CatsCaninesCode.entities.Pet;
+import edu.emich.CatsCaninesCode.entities.Record;
 import edu.emich.CatsCaninesCode.repos.AppointmentRepo;
 import edu.emich.CatsCaninesCode.repos.PetRepo;
 import edu.emich.CatsCaninesCode.repos.RecordRepo;
-import edu.emich.CatsCaninesCode.repos.UserRepo;
 
 @Controller
 @RequestMapping("/appointment")
@@ -21,9 +23,6 @@ public class AppointmentController {
 
 	@Autowired
 	private PetRepo pRepo;
-	
-	@Autowired
-	private UserRepo uRepo;
 	
 	@Autowired
 	private AppointmentRepo aRepo;
@@ -64,8 +63,22 @@ public class AppointmentController {
 //*****************************************************************************************
 		
 	@RequestMapping("/view/{id}")
-	public ModelAndView viewAppointment(@PathVariable("id") Appointment appointment) {
-		return new ModelAndView("todo");
+	public ModelAndView viewAppointment(@PathVariable("id") long appointmentId) {
+		// get appointment
+		Appointment appointment = aRepo.findById(appointmentId).orElse(null);
+		if(appointment == null) {
+			return new ModelAndView("appointment/view", "danger", "Appointment not found, please try again.");
+		}
+		
+		// get records
+		List<Record> records = rRepo.findByAppointmentId(appointmentId);
+		
+		ModelAndView returnView = new ModelAndView("appointment/view");
+		returnView.addObject("appointment", appointment);
+		if(!records.isEmpty()) {
+			returnView.addObject("records", records);		
+		}
+		return returnView;
 	}
 			
 	@RequestMapping("/edit")

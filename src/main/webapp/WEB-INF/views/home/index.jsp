@@ -13,7 +13,6 @@
 </head>
 <body>
 <%@ include file="../partials/header.jsp"%>
-
     <div class="pumpkinmain">
 		<div class="content">
 			<h4>Hello, we are </h4>

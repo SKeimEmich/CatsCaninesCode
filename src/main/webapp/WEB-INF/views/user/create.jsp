@@ -44,12 +44,8 @@
       
 			
       
-      <div class="container">
-		<c:if test="${message ne null}">
-	      <div class="alert alert-success" role="alert">
-				<h4>${message}</h4>
-		  </div>
-      	</c:if>      	
+<%@ include file="../partials/alert.jsp"%>
+   	
       	
 	    <h2>Create a New Owner</h2>
         <div class="content">

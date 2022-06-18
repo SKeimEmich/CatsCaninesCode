@@ -43,22 +43,13 @@
       </ul>
       
 			
-      
-      <div class="container">
-		<c:if test="${message ne null}">
-	      <div class="alert alert-success" role="alert">
-				<h4>${message}</h4>
-		  </div>
-      	</c:if>      	
-      	
-	    <h2>Animal Registration</h2>
+	<%@ include file="../partials/alert.jsp"%>
+     	
+	    <h2>Add Record</h2>
+	    <h3>Appointment for ${appointment.pet.name} on ${appointment.date}</h3>
         <div class="content">
           <form method="post">
             <div class="user-details">
-              <div class="input-box">
-                <span class="details">Appointment ID</span>
-                <input type="number" placeholder="Enter appointment ID" name="appointmentID" required>
-              </div>
               <div class="input-box">
                 <span class="details">Service Code</span>
                 <input type="text" placeholder="Enter service code" name="serviceCode" required>
@@ -82,8 +73,7 @@
             </div>
           </form>
         </div>
-      </div>
-
+<a href="/appointment/view/${appointment.id}" class="btn btn-primary">Back to Appointment</a>
 </body>
 
 
