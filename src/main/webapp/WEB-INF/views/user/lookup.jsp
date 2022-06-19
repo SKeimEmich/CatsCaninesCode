@@ -16,11 +16,8 @@
 
 <body>
 	<%@ include file="../partials/header.jsp"%>
-    
-
-     <%@ include file="../partials/alert.jsp"%>
+    <%@ include file="../partials/alert.jsp"%>
 	
-      	
 	    <h2>User Lookup</h2>
         <div class="content">
           <form method="post">
@@ -29,13 +26,13 @@
                 <input type="text" placeholder="Enter email address" name="email" required>
               </div>
    	         <div class="button">
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </div>
           </form>
         </div>
-      </div>
-      
+		<a href="/user/create" class="btn btn-primary">Create New User</a>      
       <c:if test="${user ne null}">
+		<a href="/user/edit/${user.email }" class="btn btn-primary">Edit User</a>      
       <h2>User Details</h2>
 		<p>
 	 		<b>Name:</b> ${user.name}<br/>

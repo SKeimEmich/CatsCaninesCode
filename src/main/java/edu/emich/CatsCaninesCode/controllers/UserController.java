@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.emich.CatsCaninesCode.entities.Pet;
 import edu.emich.CatsCaninesCode.entities.User;
@@ -48,16 +50,53 @@ public class UserController {
 	}
 //*****************************************************************************************
 
-	@RequestMapping("/edit")
-	public ModelAndView editUser() {
-		return new ModelAndView("todo");
+	@RequestMapping("/edit/{email}")
+	public ModelAndView editUser(@PathVariable("email") String email, RedirectAttributes redir) {
+		User user = uRepo.findByEmailIgnoreCase(email);
+		
+		// check if email is valid
+		if(user == null) {
+			redir.addFlashAttribute("danger", String.format("Invalid email address: %s. Please try again.", email));
+			return new ModelAndView("redirect:/user/lookup");
+		}
+		
+		return new ModelAndView("user/edit", "user", user);
 	}
 	
-	@PostMapping("/edit")
-	public ModelAndView editUserPost() {
-		return new ModelAndView("todo");
+	@PostMapping("/edit/{email}")
+	public ModelAndView editUserPost(
+			@RequestParam("ownerName") String name,
+			@RequestParam("ownerEmail") String email,
+			@RequestParam("ownerAddress") String address,
+			@RequestParam("ownerPhoneNumber") String phone,
+			@RequestParam("ownerPassword") String password,
+			@RequestParam("history") String acctType,
+			RedirectAttributes redir
+			) {
+		User user = new User(name, email, address, password, phone, acctType);
+		uRepo.save(user);
+		redir.addFlashAttribute("success", String.format("%s updated successfully.", name));
+		return new ModelAndView("redirect:/user/lookup");
+
 	}
-	
+
+//	@PostMapping("/post/{crud}")
+//	public ModelAndView postTask(
+//			Task task,
+//			@PathVariable("crud") String crud,
+//			RedirectAttributes redir) {
+//		
+//		if (crud.equals("add")) {
+//			tRepo.save(task);
+//		} else {
+//			tRepo.save(task);
+//		}
+//
+//		crud = crud.toLowerCase() + "ed";
+//		redir.addFlashAttribute("message", "<h4 class=\"text-success\">Task " + crud + " successfully.</h4>");
+//		return new ModelAndView("redirect:/tasks/");
+//	}
+
 	@RequestMapping("/lookup")
 	public ModelAndView userLookup() {
 		return new ModelAndView("user/lookup");

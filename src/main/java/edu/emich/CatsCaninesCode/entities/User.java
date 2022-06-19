@@ -71,10 +71,10 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getUserType() {
+	public String getAcctType() {
 		return acctType;
 	}
-	public void setUserType(String acctType) {
+	public void setAcctType(String acctType) {
 		this.acctType = acctType;
 	}
 	public Set<Pet> getPets() {
