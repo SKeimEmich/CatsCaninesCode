@@ -29,6 +29,7 @@
 			<b>Amount Due:</b> ${appointment.amtOwed - appointment.amtPaid}<br/>
 			<a href="/record/create/${appointment.id}" class="btn btn-primary">Add New Record</a>
 		</p>
+		<a href="/appointment/edit/${appointment.id}" class="btn btn-primary">Edit Appointment</a>
     </c:if>
     
     <c:if test="${records ne null}">

@@ -40,6 +40,15 @@ public class Appointment {
 		this.pet = pet;
 	}
 
+	public Appointment(long id, String date, String amtOwed, String amtPaid, Pet pet) {
+		super();
+		this.id = id;
+		setDate(date);
+		this.amtOwed = Double.parseDouble(amtOwed);
+		this.amtPaid = Double.parseDouble(amtPaid);
+		this.pet = pet;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,7 +58,7 @@ public class Appointment {
 	}
 	
 	public String getDate() {
-		String date = this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		String date = this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd['T']HH:mm"));
 		return date;
 	}
 

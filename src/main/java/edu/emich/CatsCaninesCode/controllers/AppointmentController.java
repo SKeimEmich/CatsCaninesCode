@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.emich.CatsCaninesCode.entities.Appointment;
 import edu.emich.CatsCaninesCode.entities.Pet;
@@ -81,14 +82,28 @@ public class AppointmentController {
 		return returnView;
 	}
 			
-	@RequestMapping("/edit")
-	public ModelAndView editAppointment() {
-		return new ModelAndView("todo");
+	@RequestMapping("/edit/{id}")
+	public ModelAndView editAppointment(@PathVariable("id") long id, RedirectAttributes redir) {
+		Appointment appointment = aRepo.findById(id).orElse(null);
+		// check if id is valid
+		if(appointment == null) {
+			redir.addFlashAttribute("danger", String.format("Invalid appointment id: %d. Please try again.", id));
+			return new ModelAndView("redirect:/user/lookup");
+		}
+		return new ModelAndView("appointment/edit", "appointment", appointment);
 	}
 	
-	@PostMapping("/edit")
-	public ModelAndView editAppointmentPost() {
-		return new ModelAndView("todo");
+	@PostMapping("/edit/{id}")
+	public ModelAndView editAppointmentPost(
+			@PathVariable("id") long id,
+			@RequestParam("date") String date,
+			@RequestParam("amtOwed") String owed,
+			@RequestParam("amtPaid") String paid,
+			@RequestParam("petId") Pet pet,
+			RedirectAttributes redir) {
+		aRepo.save(new Appointment(id, date, owed, paid, pet));
+		redir.addFlashAttribute("success", String.format("Appointment on %s updated successfully.", date));
+		return new ModelAndView(String.format("redirect:/appointment/view/%d", id));
 	}
 	
 }

@@ -1,7 +1,6 @@
 package edu.emich.CatsCaninesCode.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.emich.CatsCaninesCode.entities.Appointment;
 import edu.emich.CatsCaninesCode.entities.Pet;
@@ -85,14 +85,29 @@ public class PetController {
 		return returnView;
 	}
 			
-	@RequestMapping("/edit")
-	public ModelAndView editPet() {
-		return new ModelAndView("todo");
+	@RequestMapping("/edit/{id}")
+	public ModelAndView editPet(@PathVariable("id") long id, RedirectAttributes redir) {
+		Pet pet = pRepo.findById(id).orElse(null);
+		// check if id is valid
+		if(pet == null) {
+			redir.addFlashAttribute("danger", String.format("Invalid pet id: %d. Please try again.", id));
+			return new ModelAndView("redirect:/user/lookup");
+		}
+		return new ModelAndView("pet/edit", "pet", pet);
 	}
 	
-	@PostMapping("/edit")
-	public ModelAndView editPetPost() {
-		return new ModelAndView("todo");
+	@PostMapping("/edit/{id}")
+	public ModelAndView editPetPost(
+			@PathVariable("id") long id,
+			@RequestParam("petName") String name,
+			@RequestParam("petDOB") String dob,
+			@RequestParam("petSpecies") String species,
+			@RequestParam("petDescription") String description,
+			@RequestParam("email") User user,
+			RedirectAttributes redir) {
+		pRepo.save(new Pet(id, name, dob, species, description, user));
+		redir.addFlashAttribute("success", String.format("%s updated successfully.", name));
+		return new ModelAndView(String.format("redirect:/pet/view/%d", id));
 	}
 	
 }
