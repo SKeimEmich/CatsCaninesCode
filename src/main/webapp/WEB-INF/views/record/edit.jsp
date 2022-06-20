@@ -45,36 +45,37 @@
 			
 	<%@ include file="../partials/alert.jsp"%>
      	
-	    <h2>Add Record</h2>
-	    <h3>Appointment for ${appointment.pet.name} on ${appointment.date}</h3>
+	    <h2>Edit Record</h2>
+	    <h3>Record for ${record.appointment.pet.name} on ${record.appointment.date}</h3>
         <div class="content">
           <form method="post">
             <div class="user-details">
               <div class="input-box">
                 <span class="details">Service Code</span>
-                <input type="text" placeholder="Enter service code" name="serviceCode" required>
+                <input type="text" value="${record.serviceCode }" name="serviceCode" required>
               </div>
               <div class="input-box">
                 <span class="details">Description</span>
-                <input type="text" placeholder="Enter record description" name="description" required>
+                <input type="text" value="${record.description }" name="description" required>
               </div>              
               <div class="input-box">
                 <span class="details">Date</span>
-                <input type="date" name="renewalDate" value="2022-6-22" required>    
+                <input type="date" name="renewalDate" value="${record.date}" required>    
               </div>
               <div class="input-box">
                 <span class="details">Cost</span>
-                <input type="number" step=0.01 placeholder="Enter cost" name="cost" required>
+                <input type="number" step=0.01 value="${record.cost }" name="cost" required>
               </div>
-			
-            </div>
+              <input type="hidden" value="${record.id }" name="id" >
+              <input type="hidden" value="${record.appointment.id }" name="appointmentId">
+             </div>
             
             <div class="button">
               <input type="submit" value="Welcome To The Family!">
             </div>
           </form>
         </div>
-<a href="/appointment/view/${appointment.id}" class="btn btn-primary">Back to Appointment</a>
+<a href="/appointment/view/${record.appointment.id}" class="btn btn-primary">Back to Appointment</a>
 </body>
 
 

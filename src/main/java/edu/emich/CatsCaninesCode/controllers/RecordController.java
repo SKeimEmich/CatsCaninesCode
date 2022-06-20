@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.emich.CatsCaninesCode.entities.Appointment;
 import edu.emich.CatsCaninesCode.entities.Record;
@@ -44,23 +45,41 @@ public class RecordController {
 			@RequestParam("renewalDate") String date,
 			@RequestParam("cost") String cost,
 			@RequestParam("description") String description,
-			@PathVariable("appointmentId") Appointment appointment
+			@PathVariable("appointmentId") Appointment appointment,
+			RedirectAttributes redir
 			) {
 		
 		Record record = new Record(code, date, cost, description, appointment);
 		rRepo.save(record);
-		return new ModelAndView("/record/create", "message", String.format("%s record registered successfully! Thank you!", description));
+		redir.addFlashAttribute("success", String.format("%s record registered successfully! Thank you!", description));
+		return new ModelAndView(String.format("redirect:/appointment/view/%d", appointment.getId()));
 	}
 	
 //*****************************************************************************************
 
-	@RequestMapping("/edit")
-	public ModelAndView editRecord() {
-		return new ModelAndView("todo");
+	@RequestMapping("/edit/{id}")
+	public ModelAndView editRecord(@PathVariable("id") long id, RedirectAttributes redir) {
+		Record record = rRepo.findById(id).orElse(null);
+		if(record == null) {
+			redir.addFlashAttribute("danger", String.format("Record id %d is invalid, please try again.", id));
+			return new ModelAndView("redirect:/user/lookup");
+		}
+		return new ModelAndView("record/edit", "record", record);
 	}
 	
-	@PostMapping("/edit")
-	public ModelAndView editRecordPost() {
-		return new ModelAndView("todo");
+	@PostMapping("/edit/{id}")
+	public ModelAndView editRecordPost(
+			@PathVariable("id") long id,
+			@RequestParam("serviceCode") String code,
+			@RequestParam("renewalDate") String date,
+			@RequestParam("cost") String cost,
+			@RequestParam("description") String description,
+			@RequestParam("appointmentId") Appointment appointment,
+			RedirectAttributes redir
+			) {
+		rRepo.save(new Record(id, code, date, cost, description, appointment));
+		redir.addFlashAttribute("success", String.format("Record %d updated successfully.", id));
+		return new ModelAndView(String.format("redirect:/appointment/view/%d", appointment.getId()));
+	
 	}
 }

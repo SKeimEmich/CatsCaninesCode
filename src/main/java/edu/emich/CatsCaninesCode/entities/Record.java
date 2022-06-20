@@ -20,6 +20,9 @@ public class Record {
 	@ManyToOne
 	private Appointment appointment;
 
+	public Record() {
+		
+	}
 	public Record(String code, String date, String cost, String description, Appointment appointment)
 	{
 		super();
@@ -30,6 +33,16 @@ public class Record {
 		this.appointment = appointment;
 	}
 	
+	public Record(long id, String code, String date, String cost, String description, Appointment appointment)
+	{
+		super();
+		this.id = id;
+		this.serviceCode = Integer.valueOf(code);
+		this.date = date;
+		this.cost = Double.parseDouble(cost);
+		this.description = description;
+		this.appointment = appointment;
+	}
 	public Long getId() {
 		return id;
 	}
