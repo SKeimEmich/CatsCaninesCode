@@ -26,15 +26,15 @@ public class RecordController {
 
 //****************create record controller*************************************************
 	@RequestMapping("/create/{appointmentId}")
-	public ModelAndView createrecord(@PathVariable("appointmentId") long appointmentId) {
+	public ModelAndView createrecord(@PathVariable("appointmentId") long appointmentId, RedirectAttributes redir) {
 		// get record
 		Appointment appointment = aRepo.findById(appointmentId).orElse(null);
 		
 		// check if id is valid
 		if(appointment == null) {
-			return new ModelAndView("/record/create", "danger", "Invalid record Id");
+			redir.addFlashAttribute("danger", String.format("Invalid record Id %d.", appointmentId));
+			return new ModelAndView("redirect:/user/lookup");
 		}
-
 		return new ModelAndView("/record/create", "appointment", appointment);
 	}
 	
@@ -80,6 +80,21 @@ public class RecordController {
 		rRepo.save(new Record(id, code, date, cost, description, appointment));
 		redir.addFlashAttribute("success", String.format("Record %d updated successfully.", id));
 		return new ModelAndView(String.format("redirect:/appointment/view/%d", appointment.getId()));
-	
+	}
+
+	@RequestMapping("/delete/{id}")
+	public ModelAndView deleteRecord(@PathVariable("id") long id, RedirectAttributes redir) {
+		// get Appointment Id
+		if(rRepo.existsById(id)) {
+			long appointmentId = rRepo.findById(id).orElse(null).getAppointment().getId();
+			// delete
+			rRepo.deleteById(id);
+			redir.addFlashAttribute("success", "Record deleted successfully.");
+			return new ModelAndView(String.format("redirect:/appointment/view/%d", appointmentId));
+		} else {
+			// record not found
+			redir.addFlashAttribute("danger", "Record not found");
+			return new ModelAndView("redirect:/user/lookup");
+		}
 	}
 }

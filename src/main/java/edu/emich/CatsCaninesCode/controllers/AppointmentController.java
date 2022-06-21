@@ -35,15 +35,15 @@ public class AppointmentController {
 	
 //****************create appointment controller********************************************
 	@RequestMapping("/create/{petId}")
-	public ModelAndView createappointment(@PathVariable("petId") Long petId) {
+	public ModelAndView createappointment(@PathVariable("petId") Long petId, RedirectAttributes redir) {
 		// get pet
 		Pet pet = pRepo.findById(petId).orElse(null);
 
 		// check if id is valid
 		if(pet == null) {
-			return new ModelAndView("/appointment/create", "danger", "Invalid pet ID, please try again.");
+			redir.addFlashAttribute("danger", String.format("Invalid pet Id %d, please try again.", petId));
+			return new ModelAndView("redirect:/user/lookup");
 		}
-		
 		return new ModelAndView("/appointment/create", "pet", pet);
 	}
 	
@@ -52,23 +52,23 @@ public class AppointmentController {
 			@RequestParam("date") String date,
 			@RequestParam("amtOwed") String owed,
 			@RequestParam("amtPaid") String paid,
-			@PathVariable("petId") Pet pet
+			@PathVariable("petId") Pet pet,
+			RedirectAttributes redir
 			) {
 		aRepo.save(new Appointment(date, owed, paid, pet));
-		ModelAndView returnView = new ModelAndView("/appointment/create");
-		returnView.addObject("pet", pet);
-		returnView.addObject("message", String.format("Appointment on %s registered successfully! Thank you!", date));
-		return returnView;
+		redir.addFlashAttribute("success", String.format("Appointment on %s registered successfully! Thank you!", date));
+		return new ModelAndView("redirect:/pet/view/" + pet.getId());
 	}
 	
 //*****************************************************************************************
 		
 	@RequestMapping("/view/{id}")
-	public ModelAndView viewAppointment(@PathVariable("id") long appointmentId) {
+	public ModelAndView viewAppointment(@PathVariable("id") long appointmentId, RedirectAttributes redir) {
 		// get appointment
 		Appointment appointment = aRepo.findById(appointmentId).orElse(null);
 		if(appointment == null) {
-			return new ModelAndView("appointment/view", "danger", "Appointment not found, please try again.");
+			redir.addFlashAttribute("danger", String.format("Invalid appointment id: %d. Please try again.", appointmentId));
+			return new ModelAndView("redirect:/user/lookup");
 		}
 		
 		// get records
@@ -106,4 +106,20 @@ public class AppointmentController {
 		return new ModelAndView(String.format("redirect:/appointment/view/%d", id));
 	}
 	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView deleteAppointment(@PathVariable("id") long id, RedirectAttributes redir) {
+		// check if id is valid
+		if(aRepo.existsById(id)) {
+			// get pet id
+			long petId = aRepo.findById(id).orElse(null).getPet().getId();
+			// delete
+			aRepo.deleteById(id);
+			redir.addFlashAttribute("success", "Appointment deleted successfully.");
+			return new ModelAndView(String.format("redirect:/pet/view/%d", petId));
+		} else {
+			// appointment not found
+			redir.addFlashAttribute("danger", "Appointment not found.");
+			return new ModelAndView("redirect:/user/lookup");
+		}
+	}
 }

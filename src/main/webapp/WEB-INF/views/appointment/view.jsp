@@ -30,6 +30,7 @@
 			<a href="/record/create/${appointment.id}" class="btn btn-primary">Add New Record</a>
 		</p>
 		<a href="/appointment/edit/${appointment.id}" class="btn btn-primary">Edit Appointment</a>
+		<a href="/appointment/delete/${appointment.id}" class="btn btn-warning">Delete Appointment</a>
     </c:if>
     
     <c:if test="${records ne null}">
@@ -40,6 +41,7 @@
 				<th>Description</th>
 				<th>Cost</th>
 				<th></th>
+				<th></th>
 			</tr>
 			<c:forEach var="record" items="${records}">
 				<tr>
@@ -47,6 +49,7 @@
 					<td>${record.description}</td>
 					<td>${record.cost}</td>
 					<td><a href="/record/edit/${record.id}" class="btn btn-primary">Edit Record</a></td>
+					<td><a href="/record/delete/${record.id}" class="btn btn-warning">Delete Record</a></td>
 				</tr>
 			</c:forEach>
 		</table>

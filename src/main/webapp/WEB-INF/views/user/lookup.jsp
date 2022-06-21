@@ -32,8 +32,9 @@
         </div>
 		<a href="/user/create" class="btn btn-primary">Create New User</a>      
       <c:if test="${user ne null}">
-		<a href="/user/edit/${user.email }" class="btn btn-primary">Edit User</a>      
-      <h2>User Details</h2>
+		<a href="/user/edit/${user.email }" class="btn btn-primary">Edit User</a><br />
+		<a href="/user/delete/${user.email }" class="btn btn-warning">Delete User</a><br />
+		<h2>User Details</h2>
 		<p>
 	 		<b>Name:</b> ${user.name}<br/>
 			<b>Address:</b> ${user.address}<br/>

@@ -29,6 +29,7 @@
 			<a href="/appointment/create/${pet.id}" class="btn btn-primary">Add New Appointment</a>
 		</p>
 		<a href="/pet/edit/${pet.id }" class="btn btn-primary">Edit Pet</a> 
+		<a href="/pet/delete/${pet.id }" class="btn btn-warning">Delete Pet</a> 
     </c:if>
     
     <c:if test="${appointments ne null}">

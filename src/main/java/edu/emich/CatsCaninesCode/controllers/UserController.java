@@ -41,11 +41,8 @@ public class UserController {
 			@RequestParam("ownerPassword") String password,
 			@RequestParam("history") String acctType
 			) {
-		
-		
 		User user = new User(name, email, address, password, phone, acctType);
 		uRepo.save(user);
-
 		return new ModelAndView("/user/create", "message", String.format("New account for %s registered successfully!", name));
 	}
 //*****************************************************************************************
@@ -80,23 +77,6 @@ public class UserController {
 
 	}
 
-//	@PostMapping("/post/{crud}")
-//	public ModelAndView postTask(
-//			Task task,
-//			@PathVariable("crud") String crud,
-//			RedirectAttributes redir) {
-//		
-//		if (crud.equals("add")) {
-//			tRepo.save(task);
-//		} else {
-//			tRepo.save(task);
-//		}
-//
-//		crud = crud.toLowerCase() + "ed";
-//		redir.addFlashAttribute("message", "<h4 class=\"text-success\">Task " + crud + " successfully.</h4>");
-//		return new ModelAndView("redirect:/tasks/");
-//	}
-
 	@RequestMapping("/lookup")
 	public ModelAndView userLookup() {
 		return new ModelAndView("user/lookup");
@@ -124,6 +104,23 @@ public class UserController {
 		}
 		
 		return returnView;
+	}
+	
+	@RequestMapping("/delete/{email}")
+	public ModelAndView delete(@PathVariable("email") String email, RedirectAttributes redir) {
+		// check for email validity
+		if(uRepo.existsById(email)){
+			// delete
+			try {
+				uRepo.deleteById(email);
+				redir.addFlashAttribute("success", String.format("%s deleted successfully.", email));
+			} catch (Exception e) {
+				redir.addFlashAttribute("danger", "Unable to delete user that contains pets. Please delete pets first.");
+			}
+		} else {
+			redir.addFlashAttribute("danger", "Invalid email, please try again.");
+		}
+		return new ModelAndView("redirect:/user/lookup");
 	}
 
 }

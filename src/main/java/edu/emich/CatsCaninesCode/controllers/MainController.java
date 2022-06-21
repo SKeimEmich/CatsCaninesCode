@@ -12,11 +12,4 @@ public class MainController {
 	public ModelAndView index() {
 		return new ModelAndView("home/index");
 	}
-
-	//	Path Variable Example
-//	@RequestMapping("/{email}/pets")
-//	public ModelAndView editTask(@PathVariable("email") User user) {
-//		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(user.getEmail());
-//		return new ModelAndView("lookup/petlookup", "pets", petList);
-//	}
 }

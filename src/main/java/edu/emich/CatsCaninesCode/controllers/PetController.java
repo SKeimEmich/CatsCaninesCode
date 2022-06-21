@@ -33,11 +33,12 @@ public class PetController {
 
 //****************create pet controller**************************************************
 	@RequestMapping("/create/{email}")
-	public ModelAndView createpet(@PathVariable("email") String email) {
+	public ModelAndView createpet(@PathVariable("email") String email, RedirectAttributes redir) {
 		User user = uRepo.findByEmailIgnoreCase(email);
 		if(user == null) {
 			// no user found with this email, abort
-			return new ModelAndView("pet/create", "danger", "User not found.");
+			redir.addFlashAttribute("danger", String.format("Owner email %s not found.", email));
+			return new ModelAndView("redirect:/user/lookup");
 		}
 		return new ModelAndView("pet/create", "email", email);
 	}
@@ -61,13 +62,14 @@ public class PetController {
 		
 		
 	@RequestMapping("/view/{id}")
-	public ModelAndView viewPet(@PathVariable("id") long id) {
+	public ModelAndView viewPet(@PathVariable("id") long id, RedirectAttributes redir) {
 		// Get pet
 		Pet pet = pRepo.findById(id).orElse(null);
 		
 		// pet not found
 		if(pet == null) {
-			return new ModelAndView("pet/view", "danger", "Pet not found, please try again.");
+			redir.addFlashAttribute("danger", String.format("Pet Id %d not found, please try again.", id));
+			return new ModelAndView("redirect:/user/lookup");
 		}
 		
 		// Get appointments
@@ -108,6 +110,23 @@ public class PetController {
 		pRepo.save(new Pet(id, name, dob, species, description, user));
 		redir.addFlashAttribute("success", String.format("%s updated successfully.", name));
 		return new ModelAndView(String.format("redirect:/pet/view/%d", id));
+	}
+	
+	@RequestMapping("/delete/{id}")
+	public ModelAndView deletePet(@PathVariable("id") long id, RedirectAttributes redir) {
+		// check if pet exists
+		if(pRepo.existsById(id)) {
+			// get pet name for success message
+			String petName = pRepo.findById(id).orElse(null).getName();
+			// delete
+			pRepo.deleteById(id);
+			redir.addFlashAttribute("success", String.format("%s was deleted.", petName));
+		} else {
+			// pet does not exist
+			redir.addFlashAttribute("danger", String.format("Invalid Id: %d, please try again.", id));
+		}
+		// redirect
+		return new ModelAndView("redirect:/user/lookup");
 	}
 	
 }
