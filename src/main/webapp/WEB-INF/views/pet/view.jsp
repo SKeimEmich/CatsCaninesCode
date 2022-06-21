@@ -53,10 +53,7 @@
 			</c:forEach>
 		</table>
     </c:if>
-            <form method="post" action="/user/lookup">
-        	<input type="hidden" value="${pet.user.email}" name="email">
-        	<input type="submit" value="Back to User">
-        </form>
+       <a href="/user/view/${pet.user.email}" class="btn btn-primary">Back to Owner</a>
 </body>
 
 

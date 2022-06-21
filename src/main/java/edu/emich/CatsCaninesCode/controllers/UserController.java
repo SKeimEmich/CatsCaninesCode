@@ -47,6 +47,27 @@ public class UserController {
 	}
 //*****************************************************************************************
 
+	@RequestMapping("/view/{email}")
+	public ModelAndView viewUser(@PathVariable("email") String email, RedirectAttributes redir) {
+		// check that email is valid
+		User user = uRepo.findByEmailIgnoreCase(email);
+		if(user == null) {
+			redir.addFlashAttribute("danger", String.format("Email address %s not found, please try again.", email));
+			return new ModelAndView("redirect:/user/lookup");
+		}
+		
+		// User exists
+		ModelAndView returnView = new ModelAndView("user/view");
+		returnView.addObject("user", user);
+		
+		// get pets
+		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(email);
+		if(!petList.isEmpty()) {
+			returnView.addObject("pets", petList);
+		}
+		// return
+		return returnView;
+	}
 	@RequestMapping("/edit/{email}")
 	public ModelAndView editUser(@PathVariable("email") String email, RedirectAttributes redir) {
 		User user = uRepo.findByEmailIgnoreCase(email);
@@ -84,26 +105,48 @@ public class UserController {
 	
 	@PostMapping("/lookup")
 	public ModelAndView userLookupPost(
-			@RequestParam("email") String email) {
-		User user = uRepo.findByEmailIgnoreCase(email);
-		
-		// Check for user not found, return error message
-		if(user == null) {
-			return new ModelAndView("user/lookup", "danger", String.format("%s not found, please try again.", email));
+			@RequestParam("searchKey") String searchKey, @RequestParam("column") String column, RedirectAttributes redir) {
+		List<User> users = null;
+		User user = null;
+		switch(column) {
+		case "name":
+			users = uRepo.findByNameContainsIgnoreCase(searchKey);
+			break;
+		case "phone":
+			users = uRepo.findByPhoneContainsIgnoreCase(searchKey);
+			break;
+		case "email":
+			users = uRepo.findByEmailContainsIgnoreCase(searchKey);
+			break;
+		default:
+			return new ModelAndView("user/lookup", "danger", "How did you enter an invalid search field??");
 		}
 		
-		// User was found, get list of pets
-		List<Pet> petList = pRepo.findByUserEmailIgnoreCase(email);
-		
-		// pass pet list and user to ModelAndView
-		ModelAndView returnView = new ModelAndView("user/lookup");
-		returnView.addObject("user", user);
-		
-		if(!petList.isEmpty()){
-			returnView.addObject("pets", petList);
+		// Check if no users were found
+		if(users != null && users.isEmpty()) {
+			return new ModelAndView("user/lookup", "danger", String.format("%s not found, please try again.", searchKey));
 		}
-		
-		return returnView;
+
+		// Check if users contains one user
+		if(users != null && users.size() == 1) {
+			user = users.get(0);
+		}
+
+		if(user != null) { // only one user was found
+			// get pet list
+			List<Pet> pets = pRepo.findByUserEmailIgnoreCase(user.getEmail());
+			
+			// add redirect attributes user, pets
+			redir.addFlashAttribute("user", user);
+			if(!pets.isEmpty()) {
+				redir.addFlashAttribute("pets", pets);
+			}
+			// redirect to user/view/{email}
+			return new ModelAndView(String.format("redirect:/user/view/%s", user.getEmail()));
+		} else { // user == null, multiple users found
+			return new ModelAndView("user/lookup", "users", users);
+		}
+
 	}
 	
 	@RequestMapping("/delete/{email}")

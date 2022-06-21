@@ -22,44 +22,53 @@
         <div class="content">
           <form method="post">
               <div class="input-box">
-                <span class="details">User Email</span>
-                <input type="text" placeholder="Enter email address" name="email" required>
+                <span class="details">Search</span>
+                <input type="text" name="searchKey" required>
               </div>
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="column" id="name" value="name">
+			  <label class="form-check-label" for="name">
+			    Name
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="column" id="phone" value="phone">
+			  <label class="form-check-label" for="phone">
+			    Phone
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="radio" name="column" id="email" value="email">
+			  <label class="form-check-label" for="email">
+			    Email
+			  </label>
+			</div>
    	         <div class="button">
               <input type="submit" value="Submit" class="btn btn-primary">
             </div>
           </form>
         </div>
 		<a href="/user/create" class="btn btn-primary">Create New User</a>      
-      <c:if test="${user ne null}">
-		<a href="/user/edit/${user.email }" class="btn btn-primary">Edit User</a><br />
-		<a href="/user/delete/${user.email }" class="btn btn-warning">Delete User</a><br />
-		<h2>User Details</h2>
-		<p>
-	 		<b>Name:</b> ${user.name}<br/>
-			<b>Address:</b> ${user.address}<br/>
-			<b>Phone:</b> ${user.phone}<br/>
-			<a href="/pet/create/${user.email}" class="btn btn-primary">Add New Pet</a>
-		</p>
-    </c:if>
     
-    <c:if test="${pets ne null}">
-    <h3>Pets</h3>
+    <c:if test="${users ne null}">
+    <h3>Users</h3>
       		<table class="table">
 			<tr>
+				<th>Email</th>
 				<th>Name</th>
-				<th>Species</th>
-				<th>Description</th>
-				<th>Date of Birth</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Account Type</th>
 				<th></th>
 			</tr>
-			<c:forEach var="pet" items="${pets}">
+			<c:forEach var="user" items="${users}">
 				<tr>
-					<td>${pet.name}</td>
-					<td>${pet.species}</td>
-					<td>${pet.description}</td>
-					<td>${pet.dateOfBirth}</td>
-					<td><a href="/pet/view/${pet.id}" class="btn btn-primary">Details</a></td>
+					<td>${user.email}</td>
+					<td>${user.name}</td>
+					<td>${user.address}</td>
+					<td>${user.phone}</td>
+					<td>${user.acctType}</td>
+					<td><a href="/user/view/${user.email}" class="btn btn-primary">Details</a></td>
 				</tr>
 			</c:forEach>
 		</table>

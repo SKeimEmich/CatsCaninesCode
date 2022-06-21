@@ -111,11 +111,8 @@
             <div class="button">
               <input type="submit" value="Submit Changes">
             </div>
-          </form>
-            <form method="post" action="/user/lookup">
-        	<input type="hidden" value="${user.email}" name="email">
-        	<input type="submit" value="Back to User">
-        </form>
+       <a href="/user/view/${user.email}" class="btn btn-primary">Back to Owner</a>
+
         </div>
 </body>
 

@@ -74,10 +74,7 @@
             </div>
           </form>
         </div>
-        <form method="post" action="/user/lookup">
-        	<input type="hidden" value="${email}" name="email">
-        	<input type="submit" value="Back to Owner">
-        </form>
+       <a href="/user/view/${email}" class="btn btn-primary">Back to Owner</a>
 
 </body>
 

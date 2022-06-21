@@ -8,5 +8,7 @@ import edu.emich.CatsCaninesCode.entities.User;
 
 public interface UserRepo extends JpaRepository<User, String>{
 	User findByEmailIgnoreCase(String email);
-	List<User> findByPhone(String phone);
+	List<User> findByEmailContainsIgnoreCase(String email);
+	List<User> findByNameContainsIgnoreCase(String name);
+	List<User> findByPhoneContainsIgnoreCase(String phone);
 }
