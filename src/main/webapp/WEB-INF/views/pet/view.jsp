@@ -45,9 +45,9 @@
 			<c:forEach var="appointment" items="${appointments}">
 				<tr>
 					<td>${appointment.date}</td>
-					<td>${appointment.amtOwed}</td>
-					<td>${appointment.amtPaid}</td>
-					<td>${appointment.amtOwed - appointment.amtPaid}</td>
+					<td><fmt:formatNumber type="currency" value="${appointment.amtOwed}" /></td>
+					<td><fmt:formatNumber type="currency" value="${appointment.amtPaid}" /></td>
+					<td><fmt:formatNumber type="currency" value="${appointment.amtOwed - appointment.amtPaid}" /></td>
 					<td><a href="/appointment/view/${appointment.id}" class="btn btn-primary">Details</a></td>
 				</tr>
 			</c:forEach>

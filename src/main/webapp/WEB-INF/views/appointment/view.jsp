@@ -24,9 +24,9 @@
 		<p>
 	 		<b>Pet Name:</b> ${appointment.pet.name}<br/>
 			<b>Date:</b> ${appointment.date}<br/>
-			<b>Amount Owed:</b> ${appointment.amtOwed}<br/>
-			<b>Amount Paid:</b> ${appointment.amtPaid}<br/>
-			<b>Amount Due:</b> ${appointment.amtOwed - appointment.amtPaid}<br/>
+			<b>Amount Owed:</b> <fmt:formatNumber type="currency" value="${appointment.amtOwed}" /><br/>
+			<b>Amount Paid:</b> <fmt:formatNumber type="currency" value="${appointment.amtPaid}" /><br/>
+			<b>Amount Due:</b> <fmt:formatNumber type="currency" value="${appointment.amtOwed - appointment.amtPaid}" /><br/>
 			<a href="/record/create/${appointment.id}" class="btn btn-primary">Add New Record</a>
 		</p>
 		<a href="/appointment/edit/${appointment.id}" class="btn btn-primary">Edit Appointment</a>
@@ -47,7 +47,7 @@
 				<tr>
 					<td>${record.serviceCode}</td>
 					<td>${record.description}</td>
-					<td>${record.cost}</td>
+					<td><fmt:formatNumber type="currency" value="${record.cost}"/></td>
 					<td><a href="/record/edit/${record.id}" class="btn btn-primary">Edit Record</a></td>
 					<td><a href="/record/delete/${record.id}" class="btn btn-warning">Delete Record</a></td>
 				</tr>

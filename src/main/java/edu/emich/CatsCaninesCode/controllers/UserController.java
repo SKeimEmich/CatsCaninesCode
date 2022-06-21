@@ -105,7 +105,9 @@ public class UserController {
 	
 	@PostMapping("/lookup")
 	public ModelAndView userLookupPost(
-			@RequestParam("searchKey") String searchKey, @RequestParam("column") String column, RedirectAttributes redir) {
+			@RequestParam("searchKey") String searchKey,
+			@RequestParam("column") String column,
+			RedirectAttributes redir) {
 		List<User> users = null;
 		User user = null;
 		switch(column) {
