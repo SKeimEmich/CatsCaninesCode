@@ -9,43 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/main.css">
 </head>
 
-
-<body>
-    
-    <ul class="nav">
-    	<li class="nav-item">
-        	<a class="nav-link" href="index2">Cats & Canines </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="adminpetpage">Pet Page Edit</a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="register">Register New</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="userlookup">User Lookup</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> - </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Doug Biske </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Sam Keim </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Selwa Alsomairy </a> 
-        </li>
-      </ul>
-      
-			
-      
-<%@ include file="../partials/alert.jsp"%>
-   	
+<body>  
+<!-- <%@ include file="../partials/alert.jsp"%> -->
+<header>
+	<div class="container">
+		<h2><span>Cats </span> & Canines</h2>
+		<nav>
+			<a href="#about">About</a>
+			<a href="#services">Services</a>  
+			<!-- <a href="#">Pet Application</a> -->
+			<a href="#contact">Contact</a>
+			<a href="adminlogin.jsp">Login</a>
+		</nav>
+	</div>
+</header>
       	
 	    <h2>Create a New Owner</h2>
         <div class="content">
@@ -93,6 +73,8 @@
           </form>
           <a href="/user/lookup" class="btn btn-primary">Back to User Lookup</a>
         </div>
+
+   <script src="main.js"></script>
 </body>
 
 

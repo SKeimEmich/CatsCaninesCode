@@ -9,16 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" href="cnc.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 
 <body>
    <%@ include file="../partials/header.jsp"%>
-      <!-- Page content -->
-      <div class="main">
-        ...
-      </div>
+
 
 </body>
 

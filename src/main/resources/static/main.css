@@ -1,0 +1,579 @@
+* {
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.container{
+    width:100%;
+    max-width:1600px;
+    margin:0 auto;
+    padding-left:120px;
+    padding-right:120px
+} @media (max-width: 1024px){
+    .container{
+        padding-left:64px;
+        padding-right:64px
+    }
+}
+section h2{
+    text-align:center;
+    margin-bottom:30px;
+    text-transform:uppercase;
+    color:#FCA26E;
+    font-size:35px;
+}
+
+.button{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    border:none;
+    outline:none;
+    background:none;
+    margin-top:20px;
+    display:inline-block;
+    color:#FFFFFF;
+    font-size:20px;
+    background-color:#FCA26E;
+    padding:12px;
+    border-radius:8px;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-weight:700;cursor:pointer
+}
+
+img{
+    max-width:100%
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:99;
+}
+header .container {
+    padding-top:32px;
+    padding-bottom:32px;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack:justify;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+}
+
+header .container h2 {
+    color:white;
+    text-transform:uppercase;
+    font-size:32px;
+    font-weight:900;
+}
+
+header .container span {
+    font-weight:600;
+}
+
+header .container nav{
+    display:-ms-grid;
+    display:grid;
+    grid-gap:20px;
+    -ms-grid-columns:(auto)(4);
+    grid-template-columns:repeat(4, auto);
+    color:#FFFFFF
+} @media (max-width: 767px){
+    header .container nav{
+        display:none;
+    }
+}
+
+header .container nav a{
+    color:inherit; 
+    font-size:20px;
+    text-decoration:none;
+} 
+
+header.is-scrolling{
+    background-color:#FCA26E;
+    color:white;
+}
+
+header.is-scrolling .container
+{
+    padding-top:16px;
+    padding-bottom:16px
+}
+
+main section.banner{
+    color:white;
+    position:relative;
+    min-height:100vh;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    background-image:url(pumpkin1.png);
+    background-position:center right;
+    background-size:cover;
+}
+
+main section.banner .container{
+    width:100%;
+    position:relative;
+    z-index:1
+}
+
+main section.banner .container h1{
+    font-size:72px;
+    margin-bottom:30px
+}
+
+main section.banner .container h1 span{
+    color:#FCA26E
+} @media (max-width: 767px){
+    main section.banner .container h1{
+        font-size:36px
+    }
+}
+
+main section.banner .container h1 h3{
+    font-weight:400;
+    font-size:36px;
+    margin-bottom:40px
+} @media (max-width: 767px){
+    main section.banner .container h1 h3{
+        font-size:20px
+    }
+}
+
+main .profile{
+    background-color:#E6F0F3;
+}
+
+main .profile .container{
+    padding-top:64px;padding-bottom:64px
+}
+
+main .profile .container .about-grid{
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns:(1fr)(1);
+    grid-template-columns:repeat(1, 1fr);
+    grid-gap:16px
+
+}
+
+main .profile .container .about-grid .about{
+    border-radius:16px;
+    overflow:hidden;
+    -webkit-box-shadow:0px 6px 12px rgba(0,0,0,0.1);
+    box-shadow:0px 6px 12px rgba(0,0,0,0.1)
+}
+
+main .profile .container .about-grid .about .content{
+    background-color:#FFFFFF;
+    color:black;
+    padding:16px
+}
+
+main .profile .container .about-grid .about .content h3{
+    font-size:25px;
+    margin-bottom:16px
+} @media (max-width: 1024px){
+    main .profile .container .about-grid .about .content h3{
+        font-size:20px
+    }
+}
+
+main .profile .container .about-grid .about .content p {
+    font-size:16px;margin-bottom:16px
+}
+
+main .services {
+    background-color:#E6F0F3
+}
+
+main .services .container {
+    padding-top:64px;
+    padding-bottom:64px
+}
+
+main .services .container h2{
+    text-align:center;
+    margin-bottom:32px;
+    text-transform:uppercase;
+    font-size:36px;
+    color:#FCA26E
+} 
+
+main .services .container .services-grid {
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns:(1fr)(3);
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap:20px
+ }@media (max-width: 1024px){ 
+    main .services .container .services-grid{
+        -ms-grid-columns:(1fr)(1);
+        grid-template-columns:repeat(1, 1fr)
+    }
+}
+
+main .services .container .services-grid .service{
+    background-color:white;
+    border-radius:16px;
+    overflow:hidden;
+    -webkit-box-shadow:0px 6px 12px rgba(0,0,0,0.1);
+    box-shadow:0px 6px 12px rgba(0,0,0,0.1);
+}
+
+main .services .container .services-grid .service .img-box{
+    display:block;
+    width:100%;
+    border-bottom:5px solid #FCA26E;
+}
+
+main .services .container .services-grid .service .img-box .img{
+    display:block;
+    width:100%;
+    height:250px;
+    -o-object-fit:cover;
+    object-fit:cover;
+
+}
+
+main .services .container .services-grid .service .content{
+    padding:16px
+}
+
+main .contact{
+    background-color:#1A3947
+}
+
+main .contact .container{
+    padding-top:64px;padding-bottom:64px
+}
+
+main .contact .container h2{
+    color:#FCA26E
+}
+
+main .contact .container form{
+    display:block;
+    margin:0 auto;
+    max-width:680px
+}
+main .contact .container form .form-grid{
+    display:-ms-grid;
+    display:grid;
+    grid-gap:20px;
+    -ms-grid-columns:(1fr)(2);
+    grid-template-columns:repeat(2, 1fr)
+}
+
+main .contact .container form .form-grid .form-element,main .contact .container form .form-grid .form-area{
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    border:none;
+    outline:none;
+    background:none;
+    display:block;
+    width:100%;
+    background-color:white;
+    border-radius:8px;
+    padding:16px;
+    font-size:20px;
+    color:black
+}
+
+main .contact .container form .form-grid .form-element::-webkit-input-placeholder,main .contact .container form .form-grid .form-area::-webkit-input-placeholder{
+    color:#AAA
+}
+    
+ main .contact .container form .form-grid .form-element:-ms-input-placeholder,main .contact .container form .form-grid .form-area:-ms-input-placeholder{
+    color:#AAA
+}
+main .contact .container form .form-grid .form-element::-ms-input-placeholder,main .contact .container form .form-grid .form-area::-ms-input-placeholder{
+    color:#AAA
+}
+main .contact .container form .form-grid .form-element::placeholder,main .contact .container form .form-grid .form-area::placeholder{
+    color:#AAA
+}
+
+main .contact .container form .form-grid .form-area{
+    grid-column:1/-1
+}
+
+main .contact .container form .right-align{
+    text-align:center
+}
+
+main .login{
+    display:-ms-grid;
+    display:grid;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    min-height:100vh;
+    height:100%;
+    width:100%;
+    background:#1A3947
+}
+
+main .login .container{
+    background:#fff;
+    border-radius:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px;
+    padding-left:20px
+}
+
+main .login .container .title{
+    font-size:35px;
+    font-weight:600;
+    text-align:center;
+    line-height:100px;
+    color:#fff;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    border-radius:15px 15px 0 0;background:#D7E5F0;
+    width:380px
+}
+
+main .login .container .form{
+    padding:10px 30px 50px 30px
+}
+
+main .login .container form .field{
+    height:50px;
+    width:100%;
+    margin-top:20px;
+    position:relative
+}
+
+main .login .container form .field input{
+    height:100%;
+    width:100%;
+    outline:none;
+    font-size:17px;
+    padding-left:20px;
+    border:1px solid lightgrey;
+    border-radius:25px;-webkit-transition:all 0.3s ease;
+    transition:all 0.3s ease
+}
+
+main .login .container form .field input{
+    height:100%;
+    width:380px;
+    outline:none;
+    font-size:17px;
+    padding-left:20px;
+    border:1px solid lightgrey;
+    border-radius:25px;
+    -webkit-transition:all 0.3s ease;
+    transition:all 0.3s ease
+}
+main .login .container form .field input:focus,main .login .container form .field input:valid{
+    border-color:#4158d0
+}
+
+main .login .container form .field label{
+    position:absolute;
+    top:50%;
+    left:20px;
+    color:#999999;
+    font-weight:400;
+    font-size:17px;
+    pointer-events:none;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+    -webkit-transition:all 0.3s ease;
+    transition:all 0.3s ease
+}
+
+main .login .container form .field input:focus ~ label,main .login .container form .field input:valid ~ label{
+    top:0%;
+    font-size:16px;
+    color:pink;
+    background:#fff;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%)
+}
+
+main .login .container form .content{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    width:100%;
+    height:50px;
+    font-size:16px;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-pack:distribute;
+    justify-content:space-around
+}
+
+main .login .container form .content .checkbox{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center
+}
+
+main .login .container form .content input{
+    width:15px;
+    height:15px;
+    background:pink
+}
+
+main .login .container form .content label{
+    color:#262626;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    padding-left:5px
+}
+
+main .login .container form .content .pass-link{
+    color:""
+}
+
+main .login .container form .field input[type="submit"]{
+    color:#fff;
+     border:none;
+     padding-left:0;
+     margin-top:-10px;
+     font-size:20px;
+     font-weight:500;
+     cursor:pointer;
+     background:#D7E5F0;
+     -webkit-transition:all 0.3s ease;
+     transition:all 0.3s ease
+    }
+    
+ main .login .container form .field input[type="submit"]:active{
+    -webkit-transform:scale(0.95);
+    transform:scale(0.95)
+}
+
+main .login .container form .contact-link{
+    color:pink;
+    margin-top:20px;
+    text-align:center
+}
+
+main .login .container form .pass-link a,main .login .container form .contact-link a{
+    color:pink;
+    text-decoration:none
+}
+
+main .login .container form .pass-link a:hover,main .login .container form .contact-link a:hover{
+    text-decoration:underline
+}
+
+main .form{
+    background-color:#E6F0F3;
+    padding-top:40px;
+    padding-left:50px
+}
+
+main .form .container{
+    padding-top:64px;
+    padding-bottom:64px
+}
+
+main .form .container h3{
+    text-align:center;
+    font-family:'Arial';
+    margin-bottom:32px
+}@media (max-width: 767px){
+    main .form .container h3{
+        font-size:12px
+    }
+}
+
+main .form .container .form-grid{
+    display:-ms-grid;
+    display:grid;-ms-grid-columns:(1fr)(1);
+    grid-template-columns:repeat(1, 1fr);
+    grid-gap:10px
+}
+main .form .container .form-grid .register{
+    background-color:#1A3947;
+    color:white;
+    padding:50px;
+    border-radius:10px
+}
+
+main .form .container .form-grid .register table{
+    font-family:Calibri;
+    font-size:11pt;
+    font-style:normal;
+    font-weight:bold;
+    border-collapse:collapse
+}
+
+main .form .container .form-grid .register table.inner{
+    border:none
+}
+
+main .search{
+    background-color:#D7E5F0;
+    padding-top:150px;
+    padding-bottom:65px
+}
+
+main .search .container #myInput{
+    background-image:url("/css/searchicon.png");
+    background-position:10px 12px;
+    background-repeat:no-repeat;
+    width:100%;
+    font-size:16px;
+    padding:12px 20px 12px 40px;
+    border:1px solid #ddd;
+    margin-bottom:12px;
+    border-radius:8px
+}
+main .search .container #myUL{
+    list-style-type:none;
+    padding:0;
+    margin:0
+}
+
+main .search .container #myUL li a{
+    border:1px solid #D7E5F0;
+    margin-top:-1px;
+    background-color:#f6f6f6;
+    padding:12px;
+    text-decoration:none;
+    font-size:18px;
+    color:black;
+    display:block;
+    border-radius:8px
+}
+main .search .container #myUL li a:hover:not(.header){
+    background-color:#eee
+}
