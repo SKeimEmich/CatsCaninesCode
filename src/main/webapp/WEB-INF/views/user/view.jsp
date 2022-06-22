@@ -9,14 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <!--  <link rel="stylesheet" href="/cnc.css"> -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/sandstone/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-ABdnjefqVzESm+f9z9hcqx2cvwvDNjfrwfW5Le9138qHCMGlNmWawyn/tt4jR4ba"
+	crossorigin="anonymous">
 </head>
 
 
 <body>
-	<%@ include file="../partials/header.jsp"%>
-    <%@ include file="../partials/alert.jsp"%>
+	<%@ include file="../partials/navigation.jsp"%>
+    
+	<%@ include file="../partials/alert.jsp"%>
 	
 	    <h2>View User</h2>
 

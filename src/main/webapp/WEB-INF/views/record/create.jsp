@@ -9,42 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/sandstone/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-ABdnjefqVzESm+f9z9hcqx2cvwvDNjfrwfW5Le9138qHCMGlNmWawyn/tt4jR4ba"
+	crossorigin="anonymous">
 </head>
 
 
 <body>
+	<%@ include file="../partials/navigation.jsp"%>
     
-    <ul class="nav">
-    	<li class="nav-item">
-        	<a class="nav-link" href="index2">Cats & Canines </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="adminpetpage">Pet Page Edit</a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="register">Register New</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="userlookup">User Lookup</a> 
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> - </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Doug Biske </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Sam Keim </a>
-        </li>
-        <li class="nav-item">
-        	<a class="nav-link" href="#"> Selwa Alsomairy </a> 
-        </li>
-      </ul>
-      
-			
 	<%@ include file="../partials/alert.jsp"%>
-     	
 	    <h2>Add Record</h2>
 	    <h3>Appointment for ${appointment.pet.name} on ${appointment.date}</h3>
         <div class="content">

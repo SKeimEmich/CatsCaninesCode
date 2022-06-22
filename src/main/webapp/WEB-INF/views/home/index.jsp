@@ -8,24 +8,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
     <title>Cats and Canines</title>
 </head>
-<body>
-<!-- <%@ include file="../partials/header.jsp"%> -->
-<header>
-	<div class="container">
-		<h2><span>Cats </span> & Canines</h2>
-		<nav>
-			<a href="#about">About</a>
-			<a href="#services">Services</a>  
-			<!-- <a href="#">Pet Application</a> -->
-			<a href="#contact">Contact</a>
-			<a href="adminlogin.jsp">Login</a>
-		</nav>
-	</div>
-</header>
 
+
+<body>
+	<%@ include file="../partials/navigation.jsp"%>
 <main>
 <!-- MAIN BANNER -->
 <section class="banner">

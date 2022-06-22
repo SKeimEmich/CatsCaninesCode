@@ -9,25 +9,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Canines Vet</title>
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/main.css">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/sandstone/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-ABdnjefqVzESm+f9z9hcqx2cvwvDNjfrwfW5Le9138qHCMGlNmWawyn/tt4jR4ba"
+	crossorigin="anonymous">
 </head>
 
-<body>  
-<!-- <%@ include file="../partials/alert.jsp"%> -->
-<header>
-	<div class="container">
-		<h2><span>Cats </span> & Canines</h2>
-		<nav>
-			<a href="#about">About</a>
-			<a href="#services">Services</a>  
-			<!-- <a href="#">Pet Application</a> -->
-			<a href="#contact">Contact</a>
-			<a href="adminlogin.jsp">Login</a>
-		</nav>
-	</div>
-</header>
-      	
-	    <h2>Create a New Owner</h2>
+
+<body>
+	<%@ include file="../partials/navigation.jsp"%>
+    
+	<%@ include file="../partials/alert.jsp"%>
+    	    <h2>Create a New Owner</h2>
         <div class="content">
           <form method="post">
             <div class="user-details">
